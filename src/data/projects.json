@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1",
+    "slug": "morpion-intelligent",
+    "title": "Morpion IA",
+    "description": "Un jeu de morpion en C++ avec une IA minimax.",
+    "tags": ["C++", "IA", "algorithme"],
+    "image": "/assets/morpion.png",
+    "content": "Ce projet explore l'implémentation de l'algorithme Minimax."
+  }
+]

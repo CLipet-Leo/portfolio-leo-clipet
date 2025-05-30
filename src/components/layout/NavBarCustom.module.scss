@@ -1,0 +1,25 @@
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
