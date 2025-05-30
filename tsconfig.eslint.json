@@ -1,0 +1,21 @@
+{
+    "extends": "./tsconfig.json",
+    "include": [
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.js",
+        "**/*.jsx",
+        "next.config.mjs",
+    ],
+    "exclude": [
+        "node_modules",
+        "build",
+        ".next",
+        ".vscode",
+        "coverage",
+        "epw",
+        "prompts",
+        "docs",
+        "archives"
+    ]
+}

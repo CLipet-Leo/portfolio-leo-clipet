@@ -1,0 +1,13 @@
+{
+    "out": "src/services/docs/temp",
+    "plugin": [
+        "typedoc-plugin-markdown"
+    ],
+    "entryPoints": [
+        "src/**/*.ts*"
+    ],
+    "exclude": [
+        "**/node_modules/**"
+    ],
+    "githubPages": false
+}
