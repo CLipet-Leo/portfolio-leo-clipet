@@ -1,9 +1,6 @@
-const isProd = process.env.NODE_ENV === 'production';
+import type { NextConfig } from "next";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  basePath: isProd ? '/Portfolio_Perso' : '',
-  assetPrefix: isProd ? '/Portfolio_Perso/' : '',
+const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
