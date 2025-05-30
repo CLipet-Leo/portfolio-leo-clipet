@@ -44,10 +44,6 @@
             "mode": "auto"
         }
     ],
-    "eslint.options": {
-        "overrideConfigFile": ".eslintrc.json",
-        "ignorePath": ".eslintignore"
-    },
     "prettier.configPath": ".prettierrc",
     "prettier.ignorePath": ".prettierignore",
     "files.eol": "\n"

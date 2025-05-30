@@ -1,9 +1,0 @@
-node_modules/
-build/
-.next/
-.vscode/
-docs/
-prompts/
-coverage/
-epw/
-archives/

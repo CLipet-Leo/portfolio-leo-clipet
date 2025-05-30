@@ -1,16 +1,17 @@
-import Link from 'next/link';
+import { BookText, HomeIcon } from 'lucide-react';
+import { NavLink } from '../ui/NavLink';
 import styles from './NavBarCustom.module.scss';
 
 export default function NavBarCustom() {
   return (
     <nav className={styles.navBar}>
       <div className={styles.navContainer}>
-        <Link href="/" className={styles.link}>
+        <NavLink href="/" icon={HomeIcon}>
           Accueil
-        </Link>
-        <Link href="/projects" className={styles.link}>
+        </NavLink>
+        <NavLink href="/projects" icon={BookText}>
           Projets
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );

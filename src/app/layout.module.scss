@@ -1,9 +1,10 @@
+@use '../styles/colors';
+
 .body {
-  background-color: #f0f0f0;
+  background-color: colors.$background-color;
   font-family: Arial, sans-serif;
-  color: #333;
+  color: colors.$text-color;
   margin: 0;
-  padding: 20px;
 }
 
 .mainContent {
@@ -12,4 +13,5 @@
   padding: 20px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-height: 100vh; // Ensure the page has a minimum height of the viewport
 }
