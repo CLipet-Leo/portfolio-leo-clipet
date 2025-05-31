@@ -1,11 +1,15 @@
 import { BookText, HomeIcon } from 'lucide-react';
 import { NavLink } from '../ui/NavLink';
-import styles from './NavBarCustom.module.scss';
 
-export default function NavBarCustom() {
+/**
+ * NavBarCustom component
+ * This component renders a custom navigation bar with links to home, projects, and a profile image.
+ * It uses Lucide icons for visual representation and custom styles for layout.
+ */
+export const Navbar = () => {
   return (
-    <nav className={styles.navBar}>
-      <div className={styles.navContainer}>
+    <nav>
+      <div>
         <NavLink href="/" icon={HomeIcon}>
           Accueil
         </NavLink>
@@ -15,4 +19,4 @@ export default function NavBarCustom() {
       </div>
     </nav>
   );
-}
+};

@@ -1,3 +1,6 @@
+/**
+ * HomePage Component
+ */
 export default function HomePage() {
   return (
     <section>

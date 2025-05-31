@@ -1,9 +1,6 @@
-import styles from './FooterCustom.module.scss';
-
-export default function FooterCustom() {
-  console.log('FooterCustom rendered');
+export const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer>
       <p>© {new Date().getFullYear()} Mon Site Web (っ▀¯▀)つ</p>
       {/* <p>
         <a href="/privacy-policy">Politique de confidentialité</a> |{' '}
@@ -11,4 +8,4 @@ export default function FooterCustom() {
       </p> */}
     </footer>
   );
-}
+};
