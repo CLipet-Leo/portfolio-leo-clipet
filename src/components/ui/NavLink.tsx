@@ -1,20 +1,21 @@
-import type { LucideIcon } from 'lucide-react';
 import Link from 'next/link';
-import styles from './NavLink.module.scss';
 
 export function NavLink({
   href,
+  onClick = () => {},
   children,
-  icon: Icon,
 }: {
   href: string;
+  onClick?: () => void;
   children?: React.ReactNode;
-  icon?: LucideIcon;
 }) {
   return (
-    <Link href={href} className={styles.navLink}>
-      {Icon && <Icon className={styles.navIcon} />}
-      {children && <span className={styles.navText}>{children}</span>}
+    <Link
+      href={href}
+      onClick={onClick}
+      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+    >
+      {children && <span>{children}</span>}
     </Link>
   );
 }
