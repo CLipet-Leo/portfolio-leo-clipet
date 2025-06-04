@@ -57,10 +57,7 @@ export const AboutSection = () => {
                 Me Contacter
               </Link>
 
-              <Link
-                href="#"
-                className="border-primary text-primary hover:bg-primary/10 rounded-full border px-6 py-2 transition-colors duration-300"
-              >
+              <Link href="#" className="outline-button">
                 Télécharger CV
               </Link>
             </div>

@@ -13,7 +13,7 @@ export const HomeSection = () => {
             <span className="animate-fade-in opacity-0">Moi c'est</span>
             <span className="text-primary animate-fade-in-delay-1 opacity-0">
               {' '}
-              Leo
+              Léo
             </span>
             <span className="text-gradient animate-fade-in-delay-2 opacity-0">
               {' '}
@@ -33,7 +33,7 @@ export const HomeSection = () => {
       </div>
 
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 transform animate-bounce flex-col items-center">
-        <span className="text-muted-foreground mb-2 text-sm"> Scroll </span>
+        <span className="text-muted-foreground mb-2 text-sm"> Par ici</span>
         <ArrowDown className="text-primary h-5 w-5" />
       </div>
     </section>

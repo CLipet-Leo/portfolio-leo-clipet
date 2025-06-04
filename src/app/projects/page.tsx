@@ -1,4 +1,4 @@
-import { ProjectCard } from '@/components/projects/ProjectCard';
+import { ProjectCard } from '@/components/ui/ProjectCard';
 import projects from '@/data/projects.json';
 
 export default function ProjectsPage() {
