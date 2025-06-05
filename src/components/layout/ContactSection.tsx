@@ -1,16 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import {
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-  Twitch,
-  Twitter,
-} from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useState } from 'react';
 
 export const ContactSection = () => {
@@ -53,7 +44,7 @@ export const ContactSection = () => {
                 <div>
                   <h4 className="font-medium"> Email</h4>
                   <a
-                    href="mailto:hello@gmail.com"
+                    href="mailto:leoclipet26@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     leoclipet26@gmail.com
@@ -90,17 +81,21 @@ export const ContactSection = () => {
             <div className="pt-8">
               <h4 className="mb-4 font-medium"> Retouvez moi sur :</h4>
               <div className="flex justify-center space-x-4">
-                <a href="#" target="_blank">
+                <a
+                  className="hover:text-primary transition-colors"
+                  href="https://linkedin.com/in/léo-clipet-b885842a3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Linkedin />
                 </a>
-                <a href="#" target="_blank">
-                  <Twitter />
-                </a>
-                <a href="#" target="_blank">
-                  <Instagram />
-                </a>
-                <a href="#" target="_blank">
-                  <Twitch />
+                <a
+                  className="hover:text-primary transition-colors"
+                  href="https://github.com/CLipet-Leo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github />
                 </a>
               </div>
             </div>
