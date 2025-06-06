@@ -2,7 +2,7 @@ import { Project } from '@/types/types';
 import { ExternalLink, Github } from 'lucide-react';
 import Link from 'next/link';
 
-export function ProjectCard({ project }: { project: Project }) {
+export const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div
       // key={key}
@@ -53,4 +53,4 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
     </div>
   );
-}
+};

@@ -11,6 +11,12 @@ export interface Project {
   githubUrl: string;
 }
 
+export interface Skill {
+  name: string;
+  level: number; // 1 to 100
+  category: string; // e.g., 'Frontend', 'Backend', 'DevOps'
+}
+
 export interface Tags {
   id: string;
   name: string;

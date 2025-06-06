@@ -122,7 +122,7 @@ export const ContactSection = () => {
                   name="name"
                   required
                   className="border-input bg-background foucs:ring-2 focus:ring-primary w-full rounded-md border px-4 py-3 focus:outline-hidden"
-                  placeholder="Leo Clipet..."
+                  placeholder="Jules César..."
                 />
               </div>
 

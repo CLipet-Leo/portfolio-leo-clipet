@@ -2,14 +2,16 @@
 
 import skills from '@/data/skills.json';
 import { cn } from '@/lib/utils';
+import { Skill } from '@/types/types';
 import { useState } from 'react';
+import { SkillsCard } from '../ui/SkillsCard';
 
 const categories = ['all', 'frontend', 'backend', 'tools'];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState('all');
 
-  const filteredSkills = skills.filter(
+  const filteredSkills: Skill[] = skills.filter(
     (skill) => activeCategory === 'all' || skill.category === activeCategory,
   );
   return (
@@ -38,26 +40,7 @@ export const SkillsSection = () => {
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredSkills.map((skill, key) => (
-            <div
-              key={key}
-              className="bg-card card-hover rounded-lg p-6 shadow-xs"
-            >
-              <div className="mb-4 text-left">
-                <h3 className="text-lg font-semibold"> {skill.name}</h3>
-              </div>
-              <div className="bg-secondary/50 h-2 w-full overflow-hidden rounded-full">
-                <div
-                  className="bg-primary h-2 origin-left animate-[grow_1.5s_ease-out] rounded-full"
-                  style={{ width: skill.level + '%' }}
-                />
-              </div>
-
-              <div className="mt-1 text-right">
-                <span className="text-muted-foreground text-sm">
-                  {skill.level}%
-                </span>
-              </div>
-            </div>
+            <SkillsCard key={key} skill={skill as Skill} />
           ))}
         </div>
       </div>
