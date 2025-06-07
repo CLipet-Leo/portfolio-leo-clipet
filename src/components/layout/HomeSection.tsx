@@ -25,7 +25,10 @@ export const HomeSection = () => {
           </p>
 
           <div className="animate-fade-in-delay-4 pt-4 opacity-0">
-            <Link href="#projects" className="custom-button">
+            <Link
+              href="#projects"
+              className="custom-button bg-primary hover:text-foreground hover:border-primary transition-colors hover:border-2 hover:bg-transparent"
+            >
               Voir mes projets
             </Link>
           </div>

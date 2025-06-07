@@ -1,14 +1,17 @@
 {
+    // Terminal & UI
     "terminal.integrated.defaultProfile.linux": "zsh",
     "workbench.iconTheme": "material-icon-theme",
+    // Editor
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": "active",
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit",
         "source.organizeImports": "explicit"
     },
-    "editor.formatOnSave": true,
-    "typescript.tsdk": "node_modules/typescript/lib",
+    // Formatters
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -27,24 +30,35 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.tabSize": 2,
+    // ESLint
     "eslint.validate": [
         "javascript",
         "javascriptreact",
         "typescript",
         "typescriptreact"
     ],
-    "scss.validate": false,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "jest.runMode": "on-demand",
-    "typescript.preferences.preferTypeOnlyAutoImports": true,
     "eslint.workingDirectories": [
         {
             "mode": "auto"
         }
     ],
+    // Prettier
     "prettier.configPath": ".prettierrc",
     "prettier.ignorePath": ".prettierignore",
+    // Tailwind CSS
+    "tailwindCSS.experimental.classRegex": [
+        "cn\\(([^)]*)\\)" // pour supporter la fonction cn() dans les className
+    ],
+    // TypeScript
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.tsserver.nodePath": "node",
+    "typescript.tsserver.watchOptions": "vscode",
+    "typescript.tsserver.log": "verbose",
+    "typescript.preferences.preferTypeOnlyAutoImports": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    // Divers
+    "scss.validate": false,
+    "jest.runMode": "on-demand",
     "files.eol": "\n"
 }

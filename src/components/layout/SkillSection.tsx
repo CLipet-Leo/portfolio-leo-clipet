@@ -6,13 +6,13 @@ import { Skill } from '@/types/types';
 import { useState } from 'react';
 import { SkillsCard } from '../ui/SkillsCard';
 
-const categories = ['all', 'frontend', 'backend', 'tools'];
+const categories = ['tous', 'frontend', 'backend', 'language', 'outils'];
 
 export const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [activeCategory, setActiveCategory] = useState('tous');
 
   const filteredSkills: Skill[] = skills.filter(
-    (skill) => activeCategory === 'all' || skill.category === activeCategory,
+    (skill) => activeCategory === 'tous' || skill.category === activeCategory,
   );
   return (
     <section id="skills" className="bg-secondary/30 relative px-4 py-24">
@@ -38,7 +38,7 @@ export const SkillsSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-3 gap-5 sm:grid-cols-5 lg:grid-cols-6">
           {filteredSkills.map((skill, key) => (
             <SkillsCard key={key} skill={skill as Skill} />
           ))}

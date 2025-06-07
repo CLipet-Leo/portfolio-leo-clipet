@@ -1,3 +1,5 @@
+'use client';
+
 import { Briefcase, Code, Move3D } from 'lucide-react';
 import Link from 'next/link';
 import { PresentCard } from '../ui/PresentCard';
@@ -24,6 +26,9 @@ const presentCard = [
 ];
 
 export const AboutSection = () => {
+  const handleDownloadCV = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+  };
   return (
     <section id="about" className="relative px-4 py-24">
       {' '}
@@ -58,7 +63,11 @@ export const AboutSection = () => {
                 Me Contacter
               </Link>
 
-              <Link href="#" className="outline-button">
+              <Link
+                href="#"
+                className="outline-button pointer-events-none opacity-50"
+                onClick={handleDownloadCV}
+              >
                 Télécharger CV
               </Link>
             </div>

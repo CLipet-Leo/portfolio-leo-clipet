@@ -100,78 +100,88 @@ export const ContactSection = () => {
               </div>
             </div>
           </div>
+          <div className="bg-card relative rounded-lg p-8 shadow-xs">
+            {/* Overlay d'avertissement */}
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-lg bg-black/40 px-2 backdrop-blur-sm">
+              <span className="text-center text-lg font-semibold text-white">
+                Cette fonctionnalité n'est pas encore disponible
+              </span>
+            </div>
+            <div
+              className="bg-card rounded-lg p-8 shadow-xs"
+              onSubmit={handleSubmit}
+            >
+              <h3 className="mb-6 text-2xl font-semibold">
+                {' '}
+                Envoyer un message
+              </h3>
 
-          <div
-            className="bg-card rounded-lg p-8 shadow-xs"
-            onSubmit={handleSubmit}
-          >
-            <h3 className="mb-6 text-2xl font-semibold"> Envoyer un message</h3>
+              <form className="space-y-6">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="mb-2 block text-sm font-medium"
+                  >
+                    {' '}
+                    Nom
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    className="border-input bg-background foucs:ring-2 focus:ring-primary w-full rounded-md border px-4 py-3 focus:outline-hidden"
+                    placeholder="Jules César..."
+                  />
+                </div>
 
-            <form className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="mb-2 block text-sm font-medium"
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="mb-2 block text-sm font-medium"
+                  >
+                    {' '}
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="border-input bg-background foucs:ring-2 focus:ring-primary w-full rounded-md border px-4 py-3 focus:outline-hidden"
+                    placeholder="placeholder@gmail.com"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="mb-2 block text-sm font-medium"
+                  >
+                    {' '}
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    className="border-input bg-background foucs:ring-2 focus:ring-primary w-full resize-none rounded-md border px-4 py-3 focus:outline-hidden"
+                    placeholder="Lorem Ipsum..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={cn(
+                    'custom-button flex w-full items-center justify-center gap-2',
+                  )}
                 >
-                  {' '}
-                  Nom
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="border-input bg-background foucs:ring-2 focus:ring-primary w-full rounded-md border px-4 py-3 focus:outline-hidden"
-                  placeholder="Jules César..."
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-sm font-medium"
-                >
-                  {' '}
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="border-input bg-background foucs:ring-2 focus:ring-primary w-full rounded-md border px-4 py-3 focus:outline-hidden"
-                  placeholder="placeholder@gmail.com"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="mb-2 block text-sm font-medium"
-                >
-                  {' '}
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  className="border-input bg-background foucs:ring-2 focus:ring-primary w-full resize-none rounded-md border px-4 py-3 focus:outline-hidden"
-                  placeholder="Lorem Ipsum..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={cn(
-                  'custom-button flex w-full items-center justify-center gap-2',
-                )}
-              >
-                {isSubmitting ? 'Envoi...' : 'Envoyer le message'}
-                <Send size={16} />
-              </button>
-            </form>
+                  {isSubmitting ? 'Envoi...' : 'Envoyer le message'}
+                  <Send size={16} />
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

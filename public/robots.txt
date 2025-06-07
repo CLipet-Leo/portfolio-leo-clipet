@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://portfolio-leo-clipet.vercel.app
+
+# Sitemaps
+Sitemap: https://portfolio-leo-clipet.vercel.app/sitemap.xml

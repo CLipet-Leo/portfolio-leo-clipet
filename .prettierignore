@@ -1,9 +1,18 @@
+# Fichiers de config
+*.config.*
+*.rc
+*.json
+*.mjs
+*.cjs
+*.js
+*.ts
+
+# Dossiers d'environnement
 node_modules/
-build/
 .next/
 .vscode/
-docs/
-prompts/
+.vercel/
+build/
+out/
 coverage/
-epw/
-archives/
+.env*

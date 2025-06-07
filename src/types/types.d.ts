@@ -8,7 +8,6 @@ export interface Project {
   tags: string[];
   image: string;
   content: string;
-  githubUrl: string;
 }
 
 export interface Skill {

@@ -3,6 +3,35 @@ import { Navbar } from '@/components/layout/Navbar';
 import { ReactNode } from 'react';
 import '../styles/globals.css';
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Portfolio de Léo Clipet',
+  description: 'Développeur spécialisé jeu vidéo et applications',
+  keywords: [
+    'portfolio',
+    'développeur jeu vidéo',
+    'développeur applications',
+    'développeur 3D',
+    '3D',
+    'Next.js',
+    'React',
+    'Three.js',
+    'TypeScript',
+    'C++',
+    'Unity',
+    'Unreal Engine',
+  ],
+  authors: [{ name: 'Léo Clipet', url: 'https://github.com/CLipet-Leo' }],
+  openGraph: {
+    title: 'Portfolio de Léo Clipet',
+    description:
+      'Développeur jeu vidéo et applications, spécialisé en 3D temps réel',
+    url: 'https://portfolio-leo-clipet.vercel.app',
+    type: 'website',
+  },
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr">

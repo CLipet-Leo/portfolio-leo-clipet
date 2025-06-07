@@ -6,7 +6,15 @@
     "description": "Un court jeux d'énigmes sur Unreal Engine 5",
     "tags": ["Unreal", "Algorithme", "Blueprints"],
     "image": "img/unreal_blueprint_1.png",
-    "content": "Ce projet explore l'implémentation de l'algorithme Minimax.",
-    "githubUrl": "#"
+    "content": "Ce projet explore l'implémentation de l'algorithme Minimax."
+  },
+  {
+    "id": "2",
+    "slug": "cryptique",
+    "title": "Cryptique",
+    "description": "Jeux d'énigmes et éducatif sur les cryptiques pour mobile sur Unity",
+    "tags": ["Unity", "Puzzles", "C#"],
+    "image": "img/cryptique_illustration_1.png",
+    "content": "Cryptique est un jeu éducatif et ludique qui permet aux joueurs de découvrir les cryptiques."
   }
 ]
