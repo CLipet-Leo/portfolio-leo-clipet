@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: 'Portfolio de Léo Clipet',
     description:
       'Développeur jeu vidéo et applications, spécialisé en 3D temps réel',
-    url: 'https://portfolio-leo-clipet.vercel.app',
+    url: 'https://portfolio-leo-clipet-leo-clipets-projects.vercel.app',
     type: 'website',
   },
 };
