@@ -10,7 +10,7 @@ export const HomeSection = () => {
       <div className="z-10 container mx-auto max-w-4xl text-center">
         <div className="space-y-6">
           <h1 className="md:text:6xl text-4xl font-bold tracking-tight">
-            <span className="animate-fade-in opacity-0">Moi c'est</span>
+            <span className="animate-fade-in opacity-0">Salut, moi c'est</span>
             <span className="text-primary animate-fade-in-delay-1 opacity-0">
               {' '}
               Léo
@@ -21,7 +21,8 @@ export const HomeSection = () => {
             </span>
           </h1>
           <p className="text-muted-foreground max-2-2xl animate-fade-in-delay-3 mx-auto text-lg opacity-0 md:text-xl">
-            Je suis développeur spécialisé en jeu vidéo et passionné par l'IA.
+            Je suis développeur junior spécialisé en applications, Web, 3D temps
+            réel et jeux vidéo.
           </p>
 
           <div className="animate-fade-in-delay-4 pt-4 opacity-0">
