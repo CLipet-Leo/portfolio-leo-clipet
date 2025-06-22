@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://portfolio-leo-clipet-leo-clipets-projects.vercel.app
+Host: https://clipet-leo.dev
 
 # Sitemaps
-Sitemap: https://portfolio-leo-clipet-leo-clipets-projects.vercel.app/sitemap.xml
+Sitemap: https://clipet-leo.dev/sitemap.xml
