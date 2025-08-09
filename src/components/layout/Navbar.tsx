@@ -26,6 +26,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (isMenuOpen) return;
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
@@ -33,13 +34,26 @@ export const Navbar = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = '';
+    }
+    return () => {
+      document.documentElement.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  const showScrolledStyles = isScrolled && !isMenuOpen;
 
   return (
     <nav
       className={cn(
-        'fixed z-40 w-full transition-all duration-300',
-        isScrolled
+        'fixed top-0 left-0 z-50 w-full transition-[background-color,padding] duration-300',
+        showScrolledStyles
           ? 'bg-background/80 py-3 shadow-xs backdrop-blur-md'
           : 'py-5',
       )}
@@ -68,7 +82,7 @@ export const Navbar = () => {
         {/* Mobile navigation */}
 
         <button
-          className="text-foreground z-50 p-2 md:hidden"
+          className="text-foreground fixed top-4 right-4 z-70 p-2 md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
         >
@@ -77,12 +91,13 @@ export const Navbar = () => {
 
         <div
           className={cn(
-            'bg-background/95 backdroup-blur-md fixed inset-0 z-40 flex flex-col items-center justify-center',
-            'transition-all duration-300 md:hidden',
+            'bg-background/90 fixed inset-0 z-60 flex flex-col items-center justify-center backdrop-blur-md',
+            'transition-opacity duration-300 md:hidden',
             isMenuOpen
               ? 'pointer-events-auto opacity-100'
               : 'pointer-events-none opacity-0',
           )}
+          aria-hidden={!isMenuOpen}
         >
           <div className="flex flex-col space-y-8 text-xl">
             {navItems.map((item, key) => (
