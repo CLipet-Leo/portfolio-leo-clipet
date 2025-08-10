@@ -30,24 +30,24 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         <p className="text-muted-foreground mb-4 text-sm">
           {project.description}
         </p>
-        <div className="flex items-center justify-between">
+        {/* <div className="flex items-center justify-between">
           <div className="flex space-x-3">
-            {/* <Link
+            <Link
               href="#"
               target="_blank"
               className="text-foreground/80 hover:text-primary transition-colors duration-300"
             >
               <ExternalLink size={20} />
-            </Link> */}
-            {/* <Link
+            </Link>
+            <Link
               href={project.githubUrl}
               target="_blank"
               className="text-foreground/80 hover:text-primary transition-colors duration-300"
             >
               <Github size={20} />
-            </Link> */}
+            </Link>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

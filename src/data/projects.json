@@ -1,20 +1,66 @@
 [
   {
+    "id": "0",
+    "slug": "albedya",
+    "title": "Albedya",
+    "description": "Une application web d'étude climatique urbaine avec un moteur 3D custom fait sur avec ThreeJS.",
+    "tags": ["Next.js", "TypeScript", "PostgreSQL", "Docker", "Three.js"],
+    "image": "img/albedya.png"
+  },
+  {
     "id": "1",
     "slug": "unreal-blueprints",
     "title": "Unreal Blueprints",
     "description": "Un court jeux d'énigmes sur Unreal Engine 5",
     "tags": ["Unreal", "Algorithme", "Blueprints"],
-    "image": "img/unreal_blueprint_1.png",
-    "content": "Ce projet explore l'implémentation de l'algorithme Minimax."
+    "image": "img/unreal_blueprint_1.png"
   },
   {
     "id": "2",
-    "slug": "cryptique",
+    "slug": "cryptique-unity",
     "title": "Cryptique",
     "description": "Jeux d'énigmes et éducatif sur les cryptiques pour mobile sur Unity",
     "tags": ["Unity", "Puzzles", "C#"],
-    "image": "img/cryptique_illustration_1.png",
-    "content": "Cryptique est un jeu éducatif et ludique qui permet aux joueurs de découvrir les cryptiques."
+    "image": "img/cryptique_illustration_1.png"
+  },
+  {
+    "id": "3",
+    "slug": "unity-shader-vfx",
+    "title": "Unity Shader",
+    "description": "Un projet de découverte des shaders, systèmes de rendu, post-processing et effets visuels sur Unity",
+    "tags": ["Unity", "Shader", "Post-processing", "URP"],
+    "image": "img/unity_shader_vfx.png"
+  },
+  {
+    "id": "4",
+    "slug": "steganography-cpp",
+    "title": "Steganography C++",
+    "description": "Un projet de stéganographie en C++ pour cacher des messages dans des images",
+    "tags": ["C++", "GDI", "Bytes"],
+    "image": "img/steganography_cpp.png"
+  },
+  {
+    "id": "5",
+    "slug": "rendering-gdi-sfml",
+    "title": "Rendering GDI SFML",
+    "description": "Un projet de rendu graphique en C++ à but de comparer les performances entre les librairies GDI et SFML",
+    "tags": ["C++", "GDI", "SFML", "Graphics"],
+    "image": "img/windows_gdi_sfml.png"
+  },
+  {
+    "id": "6",
+    "slug": "portfolio-perso",
+    "title": "Portfolio Personnel",
+    "description": "Mon portfolio personnel développé avec Next.js, TypeScript et Tailwind CSS",
+    "tags": ["Next.js", "TypeScript", "Tailwind CSS"],
+    "image": "img/portfolio_perso.png"
+  },
+  {
+    "id": "7",
+    "slug": "bigsword-rpg",
+    "title": "BigSword RPG",
+    "description": "Un jeu de rôle en 2D sur powershell développé en C# avec comme inspiration Final Fantasy et pokemon",
+    "tags": ["C#", "Powershell", "RPG", "2D"],
+    "image": "img/bigsword_rpg.png"
   }
 ]
