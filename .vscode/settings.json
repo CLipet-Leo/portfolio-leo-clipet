@@ -53,7 +53,7 @@
     "typescript.tsdk": "node_modules/typescript/lib",
     "typescript.tsserver.nodePath": "node",
     "typescript.tsserver.watchOptions": "vscode",
-    "typescript.tsserver.log": "verbose",
+    "typescript.tsserver.log": "off",
     "typescript.preferences.preferTypeOnlyAutoImports": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "javascript.updateImportsOnFileMove.enabled": "always",
