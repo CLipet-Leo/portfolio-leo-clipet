@@ -47,7 +47,25 @@
     "prettier.ignorePath": ".prettierignore",
     // Tailwind CSS
     "tailwindCSS.experimental.classRegex": [
-        "cn\\(([^)]*)\\)" // pour supporter la fonction cn() dans les className
+        "cn\\(([^)]*)\\)", // pour supporter la fonction cn() dans les className
+        [
+            "cva\\(([^)]*)\\)",
+            "[\"'`]([^\"'`]*).*?[\"'`]"
+        ],
+        [
+            "cx\\(([^)]*)\\)",
+            "[\"'`]([^\"'`]*).*?[\"'`]"
+        ]
+    ],
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    // CSS Linting - Ignorer les règles at-rules inconnues (Tailwind v4)
+    "css.lint.unknownAtRules": "ignore",
+    "scss.lint.unknownAtRules": "ignore",
+    "less.lint.unknownAtRules": "ignore",
+    "css.customData": [
+        ".vscode/css-custom-data.json"
     ],
     // TypeScript
     "typescript.tsdk": "node_modules/typescript/lib",

@@ -8,7 +8,6 @@
     "mikestead.dotenv",
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
-    "ms-ceintl.vscode-language-pack-fr",
     "github.copilot",
     "github.copilot-chat",
     "github.vscode-pull-request-github",
