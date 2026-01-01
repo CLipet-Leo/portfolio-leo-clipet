@@ -50,10 +50,7 @@ export async function POST(req: Request) {
       message.length > 5000 ||
       !validateEmail(email)
     ) {
-      return NextResponse.json(
-        { error: 'Champs invalides' },
-        { status: 400 },
-      );
+      return NextResponse.json({ error: 'Champs invalides' }, { status: 400 });
     }
 
     const to = process.env.CONTACT_TO;

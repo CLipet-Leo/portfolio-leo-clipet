@@ -98,7 +98,7 @@ export async function GET() {
     const topLanguages = Object.entries(languageBytes)
       .map(([lang, bytes]) => ({
         lang,
-        percent: totalBytes ? +(bytes / totalBytes * 100).toFixed(1) : 0,
+        percent: totalBytes ? +((bytes / totalBytes) * 100).toFixed(1) : 0,
       }))
       .sort((a, b) => b.percent - a.percent)
       .slice(0, 6);

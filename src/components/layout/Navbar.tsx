@@ -55,11 +55,11 @@ export const Navbar = () => {
       className={cn(
         'fixed top-0 left-0 z-50 w-full transition-[background-color,padding] duration-300',
         showScrolledStyles
-          ? 'bg-background/80 py-3 shadow-xs backdrop-blur-md'
+          ? 'bg-background/80 py-3 shadow-sm backdrop-blur-md'
           : 'py-5',
       )}
     >
-      <div className="container flex items-center justify-between">
+      <div className="container mx-auto flex items-center justify-between px-4">
         <Link
           className="text-primary flex items-center text-xl font-bold"
           href="#home"
@@ -71,8 +71,7 @@ export const Navbar = () => {
         </Link>
 
         {/* Desktop navigation */}
-
-        <div className="hidden space-x-8 md:flex">
+        <div className="hidden items-center gap-8 md:flex">
           {navItems.map((item, key) => (
             <NavLink key={key} href={item.href}>
               {item.name}
@@ -81,7 +80,6 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile navigation */}
-
         <button
           className="text-foreground fixed top-4 right-4 z-70 p-2 md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -100,7 +98,7 @@ export const Navbar = () => {
           )}
           aria-hidden={!isMenuOpen}
         >
-          <div className="flex flex-col space-y-8 text-xl">
+          <div className="flex flex-col space-y-8 text-center text-xl">
             {navItems.map((item, key) => (
               <NavLink
                 key={key}

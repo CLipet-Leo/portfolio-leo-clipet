@@ -3,11 +3,11 @@
   { "name": "React", "level": 70, "category": "frontend" },
   { "name": "Tailwind CSS", "level": 50, "category": "frontend" },
   { "name": "Next.js", "level": 70, "category": "frontend" },
-  
+
   { "name": "Node.js", "level": 60, "category": "backend" },
   { "name": "MongoDB", "level": 40, "category": "backend" },
   { "name": "PostgreSQL", "level": 65, "category": "backend" },
-  
+
   { "name": "SQL", "level": 60, "category": "language" },
   { "name": "PHP", "level": 40, "category": "language" },
   { "name": "JavaScript", "level": 60, "category": "language" },

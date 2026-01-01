@@ -1,44 +1,113 @@
-import { ArrowDown } from 'lucide-react';
-import Link from 'next/link';
+'use client';
+
+import { cn } from '@/lib/utils';
+import {
+  AtSign,
+  Building2,
+  Clock,
+  Code2,
+  Globe,
+  MapPin,
+  Mars,
+  Smartphone,
+} from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Card, CardContent } from '../ui/card';
+import { HomeItem } from '../ui/homeItem';
+import { Separator } from '../ui/separator';
+import { RotatingText } from '../ui/shadcn-io/rotating-text';
 
 export const HomeSection = () => {
+  const [hour, setHour] = useState<string>(
+    new Date().toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    }),
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const formattedHour = now.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+      setHour(formattedHour);
+    }, 60000); // Met à jour toutes les minutes
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="home"
-      className="relative flex min-h-screen flex-col items-center justify-center px-4"
+      className="flex min-h-screen w-full flex-col items-center justify-center px-2 py-6"
     >
-      <div className="z-10 container mx-auto max-w-4xl text-center">
-        <div className="space-y-6">
-          <h1 className="md:text:6xl text-4xl font-bold tracking-tight">
-            <span className="animate-fade-in opacity-0">Salut, moi c'est</span>
-            <span className="text-primary animate-fade-in-delay-1 opacity-0">
-              {' '}
-              Léo
-            </span>
-            <span className="text-gradient animate-fade-in-delay-2 opacity-0">
-              {' '}
-              CLIPET
-            </span>
-          </h1>
-          <p className="text-muted-foreground max-2-2xl animate-fade-in-delay-3 mx-auto text-lg opacity-0 md:text-xl">
-            Je suis développeur junior spécialisé en applications, Web, 3D temps
-            réel et jeux vidéo.
-          </p>
-
-          <div className="animate-fade-in-delay-4 pt-4 opacity-0">
-            <Link
-              href="#projects"
-              className="custom-button bg-primary hover:text-foreground hover:border-primary transition-colors hover:border-2 hover:bg-transparent"
+      <div className="container mx-auto max-w-4xl">
+        <Card className="flex flex-col items-center gap-6 p-4 md:flex-row md:gap-4">
+          <CardContent />
+          <Avatar className="size-24 shrink-0 md:size-32">
+            <AvatarImage src="img/PP-discord.jpg" alt="Léo Clipet" />
+            <AvatarFallback>LC</AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col items-center space-y-4 text-center md:items-start md:text-left">
+            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+              Léo Clipet
+            </h1>
+            <Separator className="w-24" />
+            <div
+              className={cn(
+                'text-muted-foreground flex flex-row items-center gap-2 font-mono text-lg font-medium md:text-xl',
+              )}
             >
-              Voir mes projets
-            </Link>
+              <p>Développeur</p>
+              <RotatingText
+                className="text-primary w-36"
+                transition={{ type: 'spring', duration: 0.5 }}
+                text={[
+                  'Logiciel',
+                  'Web',
+                  'Applications',
+                  'Jeux Vidéo',
+                  '3D Temps Réel',
+                ]}
+                duration={3000}
+              />
+            </div>
           </div>
-        </div>
+        </Card>
       </div>
-
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 transform animate-bounce flex-col items-center">
-        <span className="text-muted-foreground mb-2 text-sm"> Par ici</span>
-        <ArrowDown className="text-primary h-5 w-5" />
+      <div className="container mx-auto mt-12 max-w-2xl space-y-4 px-4">
+        <HomeItem
+          title="Passionné par la conception de solutions numériques."
+          icon={<Code2 />}
+        />
+        <HomeItem title="Alternant chez Albedya" icon={<Building2 />} />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <HomeItem
+            title="Lyon, France"
+            icon={<MapPin />}
+            href="https://maps.app.goo.gl/rgmeJXYsxXH5J5MD7"
+          />
+          <HomeItem title={hour} icon={<Clock />} />
+          <HomeItem
+            title="+33 6 71 34 41 33"
+            icon={<Smartphone />}
+            href="tel:+33671344133"
+          />
+          <HomeItem
+            title="leoclipet26@gmail.com"
+            icon={<AtSign />}
+            href="mailto:leoclipet26@gmail.com"
+          />
+          <HomeItem
+            title="clipet-leo.dev"
+            icon={<Globe />}
+            href="https://clipet-leo.dev"
+          />
+          <HomeItem title="He / Him" icon={<Mars />} />
+        </div>
       </div>
     </section>
   );

@@ -30,36 +30,34 @@ export const AboutSection = () => {
     e.preventDefault();
   };
   return (
-    <section id="about" className="relative px-4 py-24">
-      {' '}
+    <section id="about" className="w-full px-4 py-24">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="mb-12 text-center text-3xl font-bold md:text-4xl">
-          Qui <span className="text-primary"> Suis-je</span>
+        <h2 className="mb-12 text-center text-3xl font-bold tracking-tight md:text-4xl">
+          Qui <span className="text-primary">Suis-je</span>
         </h2>
 
-        <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+        <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
               Développeur Logiciel Passionné
             </h3>
 
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground leading-relaxed">
               J'ai suivi un cursus de 3 ans en développement web, applications
               et moteurs de jeux, où j'ai acquis des compétences solides en
               programmation et gestion de projets, notamment grâce aux langages
               de bas niveau (C / C++).
             </p>
 
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground leading-relaxed">
               J'aime découvrir et créer des solutions efficaces à des problèmes
               complexes. Je suis spécialisé dans la céation d'algorithmes,
               l'utilisation de différentes librairies et frameworks, ainsi que
               la gestion de 3D en temps réel.
             </p>
 
-            <div className="flex flex-row justify-center gap-4 pt-4">
+            <div className="flex flex-wrap gap-4 pt-4">
               <Link href="#contact" className="custom-button">
-                {' '}
                 Me Contacter
               </Link>
 
@@ -73,7 +71,7 @@ export const AboutSection = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
+          <div className="space-y-6">
             {presentCard.map((card, key) => (
               <PresentCard key={key} title={card.title} icon={card.icon}>
                 {card.description}

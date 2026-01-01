@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'PlaywriteNO';
+  src: url('../assets/fonts/PlaywriteNO-Regular.ttf');
+}
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -117,4 +122,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@theme {
+  --font-playwrite: 'PlaywriteNO', sans-serif;
 }
