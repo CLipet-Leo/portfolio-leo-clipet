@@ -1,5 +1,5 @@
 import { AboutSection } from '@/components/layout/AboutSection';
-import { HomeSection } from '@/components/layout/HomeSection';
+import { HeroSection } from '@/components/layout/HeroSection';
 
 /**
  * HomePage Component
@@ -7,7 +7,7 @@ import { HomeSection } from '@/components/layout/HomeSection';
 export default function HomePage() {
   return (
     <div className="flex flex-col items-center">
-      <HomeSection />
+      <HeroSection />
       <AboutSection />
     </div>
   );
