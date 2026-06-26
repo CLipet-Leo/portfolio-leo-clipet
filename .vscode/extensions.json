@@ -1,9 +1,7 @@
 {
   "recommendations": [
-    "wallabyjs.console-ninja",
     "pranaygp.vscode-css-peek",
     "ms-vscode-remote.remote-containers",
-    "leonardssh.vscord",
     "ms-azuretools.vscode-docker",
     "mikestead.dotenv",
     "editorconfig.editorconfig",

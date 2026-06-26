@@ -62,10 +62,10 @@ export const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between px-4">
         <Link
           className="text-primary flex items-center text-xl font-bold"
-          href="#home"
+          href="/"
         >
           <span className="relative z-10">
-            <span className="text-glow text-foreground">Leo's </span>
+            <span className="text-foreground">Leo's </span>
             Portfolio
           </span>
         </Link>
