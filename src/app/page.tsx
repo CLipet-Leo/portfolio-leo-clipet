@@ -1,5 +1,5 @@
-import { AboutSection } from '@/components/layout/AboutSection';
-import { HeroSection } from '@/components/layout/HeroSection';
+import { AboutSection } from '@/components/sections/AboutSection';
+import { HeroSection } from '@/components/sections/HeroSection';
 
 /**
  * HomePage Component
