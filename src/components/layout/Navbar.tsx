@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import { NavLink } from '../ui/NavLink';
 
 const navItems = [
-  { name: 'Accueil', href: '#home' },
   { name: 'À propos', href: '#about' },
   { name: 'Compétences', href: '#skills' },
   { name: 'Statistiques', href: '#github-stats' },

@@ -2,10 +2,20 @@
 
 import { Center, Text3D } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useRef } from 'react';
+import { memo, Suspense, useRef } from 'react';
 import { Mesh } from 'three';
 
-export function FloatingText({
+// Module-level constants — no new objects created on re-renders
+const CAMERA = { position: [0, 0, 12] as [number, number, number], fov: 45 };
+const CANVAS_STYLE = {
+  background: 'transparent',
+  width: '100%',
+  height: '100%',
+} as const;
+const LIGHT_POSITION: [number, number, number] = [5, 5, 5];
+const FONT_URL = '/fonts/JetBrainsMono-Bold.json';
+
+export const FloatingText = memo(function FloatingText({
   text,
   fontUrl,
 }: {
@@ -37,21 +47,19 @@ export function FloatingText({
       />
     </Text3D>
   );
-}
+});
 
 export default function NotFoundScene() {
-  const fontUrl = '/fonts/JetBrainsMono-Bold.json';
-
   return (
-    <Canvas
-      camera={{ position: [0, 0, 12], fov: 45 }}
-      style={{ background: 'transparent', width: '100%', height: '100%' }}
-    >
+    <Canvas camera={CAMERA} style={CANVAS_STYLE}>
       <ambientLight intensity={0.6} />
-      <directionalLight position={[5, 5, 5]} intensity={1.5} />
-      <Center>
-        <FloatingText text="404" fontUrl={fontUrl} />
-      </Center>
+      <directionalLight position={LIGHT_POSITION} intensity={1.5} />
+      {/* Suspense required — Text3D loads the font file asynchronously */}
+      <Suspense fallback={null}>
+        <Center>
+          <FloatingText text="404" fontUrl={FONT_URL} />
+        </Center>
+      </Suspense>
     </Canvas>
   );
 }

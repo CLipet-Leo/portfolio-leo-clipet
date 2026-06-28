@@ -1,7 +1,8 @@
-import { ProjectCard } from '@/components/ui/ProjectCard';
+import { ProjectCard } from '@/components/ui/projects/ProjectCard';
 import projects from '@/data/projects.json';
-import { ArrowRight } from 'lucide-react';
+import { ExternalLinkIcon } from 'lucide-react';
 import Link from 'next/link';
+import { Button } from '../ui/button';
 
 export const ProjectsSection = () => {
   return (
@@ -17,20 +18,24 @@ export const ProjectsSection = () => {
           attention particulière à mes projets ^^
         </p>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3">
+        <div className="flex flex-col gap-20 md:gap-28">
           {projects.map((project, key) => (
-            <ProjectCard key={key} project={project} />
+            <ProjectCard
+              key={key}
+              project={project}
+              index={key}
+              alt={key % 2 !== 0}
+            />
           ))}
         </div>
 
         <div className="mt-12 text-center">
-          <Link
-            className="outline-button mx-auto flex items-center justify-center gap-2"
-            target="_blank"
-            href="https://github.com/CLipet-Leo"
-          >
-            Mon Github <ArrowRight size={16} />
-          </Link>
+          <Button variant="ghost" asChild>
+            <Link target="_blank" href="https://github.com/CLipet-Leo">
+              Mon Github
+              <ExternalLinkIcon className="h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

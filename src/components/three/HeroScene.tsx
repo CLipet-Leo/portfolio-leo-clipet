@@ -1,8 +1,18 @@
 'use client';
 
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useMemo, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
+
+// Module-level constants — no new objects created on re-renders
+const CAMERA = { position: [0, 0, 5.2] as [number, number, number], fov: 45 };
+const CANVAS_STYLE = { background: 'transparent' } as const;
+const RING1_ROTATION: [number, number, number] = [Math.PI / 2.6, 0, 0];
+const RING2_ROTATION: [number, number, number] = [
+  Math.PI / 1.7,
+  0,
+  Math.PI / 4.5,
+];
 
 function Scene() {
   const icoRef = useRef<THREE.Mesh>(null);
@@ -10,7 +20,6 @@ function Scene() {
   const ring1Ref = useRef<THREE.Mesh>(null);
   const ring2Ref = useRef<THREE.Mesh>(null);
   const wireMat = useRef<THREE.MeshBasicMaterial>(null);
-  const mouse = useThree((state) => state.pointer);
   const trx = useRef(0);
   const tryY = useRef(0);
 
@@ -38,10 +47,19 @@ function Scene() {
     );
   }, []);
 
-  useFrame(({ clock }) => {
+  // Dispose imperatively created Three.js objects on unmount to prevent memory leaks
+  useEffect(() => {
+    return () => {
+      particles.geometry.dispose();
+      (particles.material as THREE.Material).dispose();
+    };
+  }, [particles]);
+
+  // Read pointer directly from useFrame state — no useThree subscription needed
+  useFrame(({ clock, pointer }) => {
     const t = clock.getElapsedTime();
-    trx.current += (mouse.x * 0.55 - trx.current) * 0.06;
-    tryY.current += (mouse.y * 0.38 - tryY.current) * 0.06;
+    trx.current += (pointer.x * 0.55 - trx.current) * 0.06;
+    tryY.current += (pointer.y * 0.38 - tryY.current) * 0.06;
 
     if (icoRef.current) {
       icoRef.current.rotation.y = t * 0.28 + trx.current;
@@ -90,13 +108,13 @@ function Scene() {
       </mesh>
 
       {/* Ring 1 - lime */}
-      <mesh ref={ring1Ref} rotation={[Math.PI / 2.6, 0, 0]}>
+      <mesh ref={ring1Ref} rotation={RING1_ROTATION}>
         <torusGeometry args={[1.4, 0.007, 4, 90]} />
         <meshBasicMaterial color="#aff33e" transparent opacity={0.18} />
       </mesh>
 
       {/* Ring 2 - blue accent */}
-      <mesh ref={ring2Ref} rotation={[Math.PI / 1.7, 0, Math.PI / 4.5]}>
+      <mesh ref={ring2Ref} rotation={RING2_ROTATION}>
         <torusGeometry args={[1.5, 0.007, 4, 90]} />
         <meshBasicMaterial color="#3b82f6" transparent opacity={0.1} />
       </mesh>
@@ -109,10 +127,7 @@ function Scene() {
 
 export function HeroScene() {
   return (
-    <Canvas
-      camera={{ position: [0, 0, 5.2], fov: 45 }}
-      style={{ background: 'transparent' }}
-    >
+    <Canvas camera={CAMERA} style={CANVAS_STYLE}>
       <Scene />
     </Canvas>
   );
