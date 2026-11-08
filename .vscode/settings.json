@@ -1,6 +1,7 @@
 {
     // Terminal & UI
     "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.environmentChangesIndicator": "off",
     "workbench.iconTheme": "material-icon-theme",
     // Editor
     "editor.bracketPairColorization.enabled": true,

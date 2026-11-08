@@ -7,12 +7,15 @@ export default {
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   outDir: './public',
-  exclude: ['/api/*'],
+  // `/lab` est un outil de travail interne : la balise `noindex` de la page ne
+  // suffit pas si on l'annonce nous-mêmes dans le sitemap.
+  exclude: ['/api/*', '/lab'],
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         allow: '/',
+        disallow: ['/lab'],
       },
     ],
   },

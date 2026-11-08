@@ -64,7 +64,10 @@ requiredFiles.forEach((file) => {
 try {
   const tsconfig = JSON.parse(readFileSync('tsconfig.json', 'utf-8'));
 
-  if (tsconfig.compilerOptions.jsx === 'react-jsx' || tsconfig.compilerOptions.jsx === 'preserve') {
+  if (
+    tsconfig.compilerOptions.jsx === 'react-jsx' ||
+    tsconfig.compilerOptions.jsx === 'preserve'
+  ) {
     addCheck('passed', '✅ tsconfig.json: JSX configuré pour Next.js');
   } else {
     addCheck(

@@ -1,0 +1,77 @@
+# Consignes du projet
+
+Ce fichier rassemble les consignes utiles aux tâches de code. La direction produit
+et ses arbitrages détaillés sont dans [docs/design-direction.md](./docs/design-direction.md) ;
+les références qui les ont motivés sont dans [design/synthese.md](./design/synthese.md)
+et [design/analysis/](./design/analysis/). Ne pas recopier ces documents ici :
+maintenir leurs choix cohérents et mettre à jour ce fichier si les conventions ou
+l'état du code changent.
+
+## Contexte et architecture
+
+Portfolio personnel construit avec Next.js 16 (App Router), React 19, TypeScript,
+Tailwind CSS 4 et Three.js via React Three Fiber.
+
+- `src/app/` contient les routes et API Next.js ; `src/components/` regroupe
+  `layout/`, `sections/`, `three/` et `ui/`.
+- `src/data/` contient `projects.json` et `skills.json` ; leurs clés et les types
+  correspondants dans `src/types/types.d.ts` sont actuellement en anglais.
+- `src/styles/globals.css` contient les jetons CSS et la configuration Tailwind.
+  `components.json` documente shadcn/ui : alias `@/components/ui`, style `new-york`,
+  icônes Lucide.
+- L'alias TypeScript `@/*` cible `src/*` (voir `tsconfig.json`).
+
+## État actuel et direction cible
+
+La page d'accueil actuelle assemble le hero, la présentation et les projets dans
+`src/app/page.tsx`. Les sections réutilisables utilisent des exports nommés. Le
+hero s'appuie sur `src/components/three/HeroScene.tsx` ; les projets sont rendus par
+des cartes HTML, pas dans un `Canvas`. Les pages d'erreur et API sont dans
+`src/app/`.
+
+La timeline « Instrument » décrite dans `docs/design-direction.md` est la cible,
+pas l'état déjà livré. Avant de modifier l'inventaire ci-dessus, vérifier le code.
+La palette cible (#1C1B1A / #7CFFB2) n'est pas encore implémentée : les jetons
+actuels sont dans `globals.css`. Ne pas décrire les couleurs, la typographie ou les
+composants cibles comme existants tant qu'ils ne le sont pas.
+
+Les éléments de conception qui ne sont pas explicitement tranchés dans le document
+de direction doivent être clarifiés et consignés avant de coder le comportement
+concerné, notamment :
+
+- le lien entre le choix d'un profil visiteur et le choix d'une catégorie de projets ;
+- les types d'étapes de la timeline et la précision de leurs dates ;
+- la liste finale des catégories de projets.
+
+Ne pas bloquer les tâches sans rapport avec ces choix. Pour les animations et
+visuels, prendre en compte la réduction des animations, le clavier et un contenu de
+repli si WebGL est indisponible.
+
+## Conventions de mise en œuvre
+
+- Préserver la distinction entre faits visibles sans action et navigation :
+  les faits d'un projet ne doivent pas être cachés derrière un clic.
+- Garder l'interface sobre et l'accent réservé aux états actifs ; suivre les valeurs
+  exactes de la cible dans `docs/design-direction.md`, pas dans une copie divergente.
+- Respecter les rôles typographiques de la direction : grotesque pour le discours,
+  mono pour les données, jamais pour du texte suivi.
+- Le son, s'il est implémenté, reste désactivé par défaut ; pas d'autoplay.
+- Vérifier l'existence des destinations avant d'ajouter ou de modifier des liens.
+  La navigation et certains boutons référencent actuellement des ancres ou routes
+  qui ne sont pas définies dans l'accueil ou l'App Router.
+- Utiliser `useFrame` et les primitives R3F pour la scène ; éviter les mises à jour
+  React à chaque frame et respecter la propriété/libération des ressources Three.js.
+
+## Commandes
+
+Le projet utilise pnpm via Corepack, avec la version indiquée dans `package.json`.
+
+- `corepack pnpm install --frozen-lockfile` — installation des dépendances.
+- `corepack pnpm dev` — serveur de développement.
+- `corepack pnpm lint` — ESLint.
+- `corepack pnpm build` — build Next.js.
+- `corepack pnpm check-config` — vérification des fichiers et options de configuration.
+
+Aucun script `test` n'est défini dans `package.json`. Ne pas annoncer une suite de
+tests comme disponible sans l'avoir ajoutée ; lancer les vérifications ciblées
+appropriées au changement.
