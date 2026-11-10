@@ -1,7 +1,7 @@
 # Consignes du projet
 
 Ce fichier rassemble les consignes utiles aux tâches de code. La direction produit
-et ses arbitrages détaillés sont dans [docs/design-direction.md](./docs/design-direction.md) ;
+et ses arbitrages détaillés sont dans [docs/design-system.md](./docs/design-system
 les références qui les ont motivés sont dans [design/synthese.md](./design/synthese.md)
 et [design/analysis/](./design/analysis/). Ne pas recopier ces documents ici :
 maintenir leurs choix cohérents et mettre à jour ce fichier si les conventions ou
@@ -16,10 +16,12 @@ Tailwind CSS 4 et Three.js via React Three Fiber.
   `layout/`, `sections/`, `three/` et `ui/`.
 - `src/data/` contient `projects.json` et `skills.json` ; leurs clés et les types
   correspondants dans `src/types/types.d.ts` sont actuellement en anglais.
-- `src/styles/globals.css` contient les jetons CSS et la configuration Tailwind.
+- `src/app/global.css` contient les jetons CSS et la configuration Tailwind.
   `components.json` documente shadcn/ui : alias `@/components/ui`, style `new-york`,
   icônes Lucide.
 - L'alias TypeScript `@/*` cible `src/*` (voir `tsconfig.json`).
+
+Note : Les fichiers de polices sont chargés via `next/font/local` dans `layout.tsx`. La direction visuelle est fixée dans `docs/design-system.md`. (Note : les primitives `button`, `badge`, `card` et `separator` suivent les recettes de `docs/composants.md` ; les sections et les scènes Three.js utilisent la palette et la typographie « Schéma », mais leurs textes, la matrice de points et la timeline ne sont pas encore livrés. Suivi : `docs/plan-migration.md`.)
 
 ## État actuel et direction cible
 
@@ -29,10 +31,14 @@ hero s'appuie sur `src/components/three/HeroScene.tsx` ; les projets sont rendus
 des cartes HTML, pas dans un `Canvas`. Les pages d'erreur et API sont dans
 `src/app/`.
 
-La timeline « Instrument » décrite dans `docs/design-direction.md` est la cible,
-pas l'état déjà livré. Avant de modifier l'inventaire ci-dessus, vérifier le code.
-La palette cible (#1C1B1A / #7CFFB2) n'est pas encore implémentée : les jetons
-actuels sont dans `globals.css`. Ne pas décrire les couleurs, la typographie ou les
+La direction historique « Instrument » (palette #1C1B1A / #7CFFB2, deux voix,
+timeline) est remplacée pour les choix visuels par « Schéma » : fond sombre
+#0A0D14, texte #E4EAF4, bleu réservé à l'état actif, coins chanfreinés.
+`docs/design-system.md` conserve l'historique « Instrument » ;
+`docs/design-system.md` fixe la direction visuelle courante,
+`src/app/global.css` les valeurs et `docs/composants.md` les recettes.
+La timeline n'est pas encore livrée : la page d'accueil assemble encore hero,
+présentation et projets. Ne pas décrire les couleurs, la typographie ou les
 composants cibles comme existants tant qu'ils ne le sont pas.
 
 Les éléments de conception qui ne sont pas explicitement tranchés dans le document
@@ -52,7 +58,7 @@ repli si WebGL est indisponible.
 - Préserver la distinction entre faits visibles sans action et navigation :
   les faits d'un projet ne doivent pas être cachés derrière un clic.
 - Garder l'interface sobre et l'accent réservé aux états actifs ; suivre les valeurs
-  exactes de la cible dans `docs/design-direction.md`, pas dans une copie divergente.
+  exactes de la cible dans `docs/design-system.md`, pas dans une copie divergente.
 - Respecter les rôles typographiques de la direction : grotesque pour le discours,
   mono pour les données, jamais pour du texte suivi.
 - Le son, s'il est implémenté, reste désactivé par défaut ; pas d'autoplay.

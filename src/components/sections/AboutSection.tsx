@@ -1,8 +1,6 @@
 'use client';
 
 import { motion, useReducedMotion, type MotionProps } from 'motion/react';
-import Link from 'next/link';
-import { Button } from '../ui/button';
 
 const specialties = [
   {
@@ -22,7 +20,7 @@ const specialties = [
   },
 ];
 
-const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const EASE: [number, number, number, number] = [0.2, 0, 0, 1];
 
 export const AboutSection = () => {
   const reduce = useReducedMotion();
@@ -31,10 +29,10 @@ export const AboutSection = () => {
     reduce
       ? { initial: false }
       : {
-          initial: { opacity: 0, y: 16 },
+          initial: { opacity: 0, y: 6 },
           whileInView: { opacity: 1, y: 0 },
           viewport: { once: true, amount: 0.3 },
-          transition: { duration: 0.6, delay, ease: EASE },
+          transition: { duration: 0.24, delay, ease: EASE },
         };
 
   return (
@@ -42,13 +40,13 @@ export const AboutSection = () => {
       <div className="container mx-auto max-w-5xl">
         <div className="max-w-[65ch]">
           <motion.h2
-            className="mb-10 text-3xl font-bold tracking-tight md:text-4xl"
+            className="font-dot text-signal mb-10 font-bold lowercase"
             {...reveal(0)}
           >
-            Qui <span className="text-primary">Suis-je</span>
+            Qui Suis-je
           </motion.h2>
 
-          <motion.h3 className="mb-4 text-2xl font-semibold" {...reveal(0.05)}>
+          <motion.h3 className="text-h3 mb-4 font-semibold" {...reveal(0.05)}>
             Développeur Logiciel Passionné
           </motion.h3>
 
@@ -76,10 +74,10 @@ export const AboutSection = () => {
             {specialties.map((spec, i) => (
               <motion.div
                 key={spec.label}
-                className="border-t border-zinc-200 py-6 dark:border-zinc-800"
-                {...reveal(0.2 + i * 0.07)}
+                className="border-border border-t py-6"
+                {...reveal(0.2 + i * 0.04)}
               >
-                <p className="text-muted-foreground mb-2 text-xs tracking-[0.15em] uppercase">
+                <p className="text-label text-muted-foreground mb-2 font-mono lowercase">
                   {spec.label}
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
@@ -87,14 +85,8 @@ export const AboutSection = () => {
                 </p>
               </motion.div>
             ))}
-            <div className="border-t border-zinc-200 dark:border-zinc-800" />
+            <div className="border-border border-t" />
           </div>
-
-          <motion.div className="mt-10 flex flex-wrap gap-4" {...reveal(0.38)}>
-            <Button variant="outline" asChild>
-              <Link href="/contact">Me Contacter</Link>
-            </Button>
-          </motion.div>
         </div>
       </div>
     </section>

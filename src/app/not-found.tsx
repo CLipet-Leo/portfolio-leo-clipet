@@ -9,15 +9,15 @@ export default function NotFoundPage() {
         <NotFoundScene />
       </div>
       <div className="flex flex-col items-center gap-3 text-center">
-        <p className="text-primary font-mono text-xs tracking-[0.12em] uppercase opacity-85">
+        <p className="text-label text-muted-foreground font-mono">
           // erreur 404 — page introuvable
         </p>
-        <h1 className="text-[clamp(28px,4vw,44px)] leading-[1.07] font-bold tracking-[-0.03em]">
+        <h1 className="font-dot text-signal font-bold lowercase">
           Vous êtes tombé
           <br />
-          dans le <span className="text-primary">vide numérique.</span>
+          dans le vide numérique.
         </h1>
-        <p className="text-muted-foreground max-w-xs text-sm leading-[1.7]">
+        <p className="text-small text-muted-foreground max-w-xs">
           Cette page n'existe pas ou a été déplacée.
         </p>
         <Button variant="outline" asChild className="mt-1">

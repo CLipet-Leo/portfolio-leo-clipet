@@ -8,11 +8,7 @@ import { NavLink } from '../ui/NavLink';
 
 const navItems = [
   { name: 'À propos', href: '#about' },
-  { name: 'Compétences', href: '#skills' },
-  { name: 'Statistiques', href: '#github-stats' },
   { name: 'Projets', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
-  // Add more items as needed
 ];
 
 /**
@@ -52,21 +48,16 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 z-50 w-full transition-[background-color,padding] duration-300',
-        showScrolledStyles
-          ? 'bg-background/80 py-3 shadow-sm backdrop-blur-md'
-          : 'py-5',
+        'ease-system fixed top-0 left-0 z-50 w-full transition-[background-color,padding] duration-[120ms]',
+        showScrolledStyles ? 'bg-background/80 py-3 backdrop-blur-md' : 'py-5',
       )}
     >
       <div className="container mx-auto flex items-center justify-between px-4">
         <Link
-          className="text-primary flex items-center text-xl font-bold"
+          className="font-dot text-foreground flex items-center text-xl font-bold lowercase"
           href="/"
         >
-          <span className="relative z-10">
-            <span className="text-foreground">Leo's </span>
-            Portfolio
-          </span>
+          Leo's Portfolio
         </Link>
 
         {/* Desktop navigation */}
@@ -90,7 +81,7 @@ export const Navbar = () => {
         <div
           className={cn(
             'bg-background/90 fixed inset-0 z-60 flex flex-col items-center justify-center backdrop-blur-md',
-            'transition-opacity duration-300 md:hidden',
+            'ease-system transition-opacity duration-[120ms] md:hidden',
             isMenuOpen
               ? 'pointer-events-auto opacity-100'
               : 'pointer-events-none opacity-0',

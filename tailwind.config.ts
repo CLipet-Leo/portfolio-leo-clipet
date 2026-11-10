@@ -1,7 +1,7 @@
 /**
  * Configuration Tailwind CSS v4
  * Note: Tailwind v4 utilise CSS natif, ce fichier est optionnel
- * La configuration principale se trouve dans src/styles/globals.css
+ * La configuration principale se trouve dans src/app/global.css
  */
 import type { Config } from 'tailwindcss';
 

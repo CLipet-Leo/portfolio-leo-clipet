@@ -1,5 +1,12 @@
 # Direction de design — Portfolio personnel
 
+**Note d'introduction.** Ce document est la direction historique « Instrument »
+(palette #1C1B1A / #7CFFB2, deux voix, timeline). Il n'est plus la cible visuelle
+du projet : les choix visuels sont aujourd'hui ceux du design system importé
+« Schéma », fixé par [./design-system.md](./design-system.md). Les intentions de
+parcours et les arbitrages ci-dessous sont conservés comme historique et ne
+s'appliquent plus aux choix visuels.
+
 Ce document fixe la direction retenue après la phase de réflexion. Il répond aux 8
 questions de ma note, tranche les contradictions de la synthèse des références, et
 décrit un système de design assez précis pour être implémenté sans arbitrage
@@ -196,7 +203,7 @@ sans clic — c'est la réponse au reproche « manque d'informations cruel ».
 
 ## 5. Ordre d'implémentation
 
-1. **Tokens** — palette, typo, coins chanfreinés, dans `globals.css`.
+1. **Tokens** — palette, typo, coins chanfreinés, dans [../src/app/global.css](../src/app/global.css) (source de vérité).
 2. **Composants de la timeline** — axe gradué, graduation cliquable, mini-carte de
    l'axe, panneau de projet, liste de faits.
 3. **Ouverture** — nom, ligne de positionnement, acteur 3D.

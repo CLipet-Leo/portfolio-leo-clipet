@@ -1,9 +1,53 @@
 import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
+import localFont from 'next/font/local';
 import { ReactNode } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../styles/globals.css';
+import './global.css';
+
+const geistSans = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Geist/Geist-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Geist/Geist-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-geist-sans',
+});
+
+const geistMono = localFont({
+  src: [
+    {
+      path: '../../public/fonts/GeistMono/GeistMono-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/GeistMono/GeistMono-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-geist-mono',
+});
+
+const doto = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Doto/Doto-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-doto',
+});
 
 import type { Metadata } from 'next';
 
@@ -36,8 +80,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="fr">
-      <body className="dark">
+    <html lang="fr" className="dark">
+      <body
+        suppressHydrationWarning
+        className={`${geistSans.variable} ${geistMono.variable} ${doto.variable}`}
+      >
         <div className="bg-background text-foreground min-h-screen overflow-x-hidden">
           <Navbar />
           <main>{children}</main>

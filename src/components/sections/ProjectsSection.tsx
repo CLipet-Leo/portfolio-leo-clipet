@@ -8,8 +8,8 @@ export const ProjectsSection = () => {
   return (
     <section id="projects" className="relative px-4 py-24">
       <div className="mx-auto w-full max-w-6xl md:container 2xl:max-w-7xl">
-        <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">
-          Projets en <span className="text-primary">Vedette</span>
+        <h2 className="font-dot text-signal mb-4 text-center font-bold lowercase">
+          Projets en Vedette
         </h2>
 
         <p className="text-muted-foreground mx-auto mb-12 max-w-2xl text-center">
@@ -30,8 +30,12 @@ export const ProjectsSection = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <Button variant="ghost" asChild>
-            <Link target="_blank" href="https://github.com/CLipet-Leo">
+          <Button variant="outline" asChild>
+            <Link
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/CLipet-Leo"
+            >
               Mon Github
               <ExternalLinkIcon className="h-4 w-4" />
             </Link>

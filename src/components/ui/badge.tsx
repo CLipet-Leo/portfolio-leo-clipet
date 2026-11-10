@@ -3,45 +3,34 @@ import { Slot } from 'radix-ui';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
-// font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 4px;
-// border: 0.5px solid var(--border); color: var(--muted-fg); background: rgba(15,23,42,0.7); letter-spacing: 0.04em;
 
 const badgeVariants = cva(
-  'font-mono inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-[4px] border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3',
+  'inline-flex h-5.5 w-fit shrink-0 items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-sm border px-2 font-dot text-[14px] font-bold [&>svg]:pointer-events-none [&>svg]:size-3',
   {
     variants: {
       variant: {
-        default:
-          'bg-primary/7 border-primary/28 text-primary [a&]:hover:bg-primary/90',
-        secondary:
-          'bg-secondary/7 border-secondary text-muted-foreground [a&]:hover:bg-secondary/90',
-        destructive:
-          'bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90',
-        outline:
-          'border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground',
-        ghost: '[a&]:hover:bg-accent [a&]:hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 [a&]:hover:underline',
+        default: 'border-transparent bg-primary text-primary-foreground',
+        secondary: 'border-transparent bg-secondary text-secondary-foreground',
+        outline: 'border-border text-foreground',
+        destructive: 'border-destructive/35 bg-destructive/12 text-destructive',
+        dot: "border-border font-mono text-label font-medium lowercase text-foreground before:size-1.5 before:rounded-full before:bg-primary before:content-['']",
       },
     },
-    defaultVariants: {
-      variant: 'default',
-    },
+    defaultVariants: { variant: 'default' },
   },
 );
 
 function Badge({
   className,
-  variant = 'default',
+  variant,
   asChild = false,
   ...props
 }: React.ComponentProps<'span'> &
   VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
   const Comp = asChild ? Slot.Root : 'span';
-
   return (
     <Comp
       data-slot="badge"
-      data-variant={variant}
       className={cn(badgeVariants({ variant }), className)}
       {...props}
     />

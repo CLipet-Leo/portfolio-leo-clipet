@@ -39,7 +39,7 @@ function Scene() {
     return new THREE.Points(
       geo,
       new THREE.PointsMaterial({
-        color: 0xaff33e,
+        color: 0x0072ec,
         size: 0.025,
         transparent: true,
         opacity: 0.4,
@@ -81,7 +81,7 @@ function Scene() {
       {/* Inner solid — occludes back-facing edges */}
       <mesh>
         <icosahedronGeometry args={[1, 1]} />
-        <meshBasicMaterial color="#020617" side={THREE.BackSide} />
+        <meshBasicMaterial color="#0a0d14" side={THREE.BackSide} />
       </mesh>
 
       {/* Primary wireframe icosahedron */}
@@ -89,7 +89,7 @@ function Scene() {
         <icosahedronGeometry args={[1.02, 1]} />
         <meshBasicMaterial
           ref={wireMat}
-          color="#aff33e"
+          color="#0072ec"
           wireframe
           transparent
           opacity={0.55}
@@ -100,23 +100,23 @@ function Scene() {
       <mesh ref={outerRef}>
         <icosahedronGeometry args={[1.28, 1]} />
         <meshBasicMaterial
-          color="#1e293b"
+          color="#263044"
           wireframe
           transparent
           opacity={0.18}
         />
       </mesh>
 
-      {/* Ring 1 - lime */}
+      {/* Ring 1 - primary */}
       <mesh ref={ring1Ref} rotation={RING1_ROTATION}>
         <torusGeometry args={[1.4, 0.007, 4, 90]} />
-        <meshBasicMaterial color="#aff33e" transparent opacity={0.18} />
+        <meshBasicMaterial color="#0072ec" transparent opacity={0.18} />
       </mesh>
 
-      {/* Ring 2 - blue accent */}
+      {/* Ring 2 - foreground */}
       <mesh ref={ring2Ref} rotation={RING2_ROTATION}>
         <torusGeometry args={[1.5, 0.007, 4, 90]} />
-        <meshBasicMaterial color="#3b82f6" transparent opacity={0.1} />
+        <meshBasicMaterial color="#e4eaf4" transparent opacity={0.1} />
       </mesh>
 
       {/* Floating particle cloud */}

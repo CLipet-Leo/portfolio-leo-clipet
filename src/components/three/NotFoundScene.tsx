@@ -41,8 +41,8 @@ export const FloatingText = memo(function FloatingText({
     >
       {text}
       <meshStandardMaterial
-        color="#AFF33E"
-        emissive="#AFF33E"
+        color="#0072ec"
+        emissive="#0072ec"
         emissiveIntensity={0.15}
       />
     </Text3D>

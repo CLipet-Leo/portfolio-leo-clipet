@@ -9,16 +9,16 @@ import { Button } from '../ui/button';
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.09, delayChildren: 0.05 },
+    transition: { staggerChildren: 0.04 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 0, y: 6 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.65, ease: 'easeOut' as const },
+    transition: { duration: 0.24, ease: [0.2, 0, 0, 1] as const },
   },
 };
 
@@ -36,23 +36,23 @@ export const HeroSection = () => {
             animate="visible"
           >
             <motion.p
-              className="text-primary font-mono text-xs tracking-[0.12em] uppercase opacity-85"
+              className="text-label text-muted-foreground font-mono"
               variants={itemVariants}
             >
               // développeur full-stack & systèmes
             </motion.p>
             <motion.h1
-              className="text-[clamp(32px,4.5vw,52px)] leading-[1.07] font-bold tracking-[-0.03em]"
+              className="font-dot text-signal font-bold lowercase"
               variants={itemVariants}
             >
               Je construis des
               <br />
               expériences qui
               <br />
-              <span className="text-primary">ont du relief.</span>
+              ont du relief.
             </motion.h1>
             <motion.p
-              className="text-muted-foreground max-w-[340px] text-sm leading-[1.7] font-normal"
+              className="text-small text-muted-foreground max-w-[340px]"
               variants={itemVariants}
             >
               Du bas niveau au web, des interfaces soignées,
@@ -62,9 +62,9 @@ export const HeroSection = () => {
               className="mt-1 flex flex-wrap gap-2"
               variants={itemVariants}
             >
-              <Badge>TypeScript</Badge>
-              <Badge>Next.js</Badge>
-              <Badge>Three.js / R3F</Badge>
+              <Badge variant="secondary">TypeScript</Badge>
+              <Badge variant="secondary">Next.js</Badge>
+              <Badge variant="secondary">Three.js / R3F</Badge>
               <Badge variant="secondary">PostgreSQL</Badge>
               <Badge variant="secondary">C / C++</Badge>
               <Badge variant="secondary">Rust</Badge>
@@ -76,22 +76,19 @@ export const HeroSection = () => {
               <Button asChild>
                 <Link href="#projects">Voir mes projets</Link>
               </Button>
-              <Button variant="outline" asChild>
-                <Link href="#contact">Me contacter</Link>
-              </Button>
             </motion.div>
           </motion.div>
 
           <motion.div
             className="relative h-full min-h-[320px] w-full md:min-h-0"
-            initial={shouldReduce ? false : { opacity: 0, scale: 0.94 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: 'easeOut', delay: 0.1 }}
+            initial={shouldReduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.24, ease: [0.2, 0, 0, 1] }}
           >
             <HeroScene />
             <div className="pointer-events-none absolute right-0 bottom-6 flex items-center gap-1.5">
-              <span className="bg-primary/30 h-[5px] w-[5px] rounded-full" />
-              <span className="text-muted-foreground/40 font-mono text-[10px] tracking-[0.06em]">
+              <span className="bg-faint size-1.5 rounded-full" />
+              <span className="text-label text-muted-foreground font-mono">
                 three.js · r3f
               </span>
             </div>
