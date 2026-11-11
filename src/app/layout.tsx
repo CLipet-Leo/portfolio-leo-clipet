@@ -1,9 +1,51 @@
-import { Footer } from '@/components/layout/Footer';
-import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/footer';
+import { Navbar } from '@/components/layout/navbar';
+import localFont from 'next/font/local';
 import { ReactNode } from 'react';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import '../styles/globals.css';
+import './global.css';
+
+const geistSans = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Geist/Geist-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Geist/Geist-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-geist-sans',
+});
+
+const geistMono = localFont({
+  src: [
+    {
+      path: '../../public/fonts/GeistMono/GeistMono-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/GeistMono/GeistMono-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-geist-mono',
+});
+
+const doto = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Doto/Doto-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-doto',
+});
 
 import type { Metadata } from 'next';
 
@@ -34,26 +76,32 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+  modal,
+}: {
+  children: ReactNode;
+  /** Slot `@modal` : fiche projet ouverte par-dessus la page (route interceptée). */
+  modal: ReactNode;
+}) {
   return (
-    <html lang="fr">
-      <body>
-        <div className="bg-background text-foreground min-h-screen overflow-x-hidden">
+    <html lang="fr" className="dark">
+      <body
+        suppressHydrationWarning
+        className={`${geistSans.variable} ${geistMono.variable} ${doto.variable}`}
+      >
+        <a
+          href="#contenu"
+          className="sr-only z-100 bg-background px-4 py-2 font-mono text-data text-foreground focus-visible:not-sr-only focus-visible:fixed focus-visible:top-2 focus-visible:left-2"
+        >
+          aller au contenu
+        </a>
+        <div className="min-h-screen overflow-x-clip bg-background text-foreground">
           <Navbar />
-          <main>{children}</main>
+          <main id="contenu">{children}</main>
           <Footer />
         </div>
-        {/* Toasts global */}
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          newestOnTop
-          closeOnClick
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
+        {modal}
       </body>
     </html>
   );

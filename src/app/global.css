@@ -1,0 +1,457 @@
+/* ==========================================================================
+   Portfolio — design system « Schéma »
+   Source de vérité des tokens de style.
+   Format : shadcn/ui (new-york) · Tailwind CSS v4.
+
+   Polices à charger dans app/layout.tsx (next/font) :
+     - Geist        → variable --font-geist-sans   (package `geist`)
+     - Geist Mono   → variable --font-geist-mono   (package `geist`)
+     - Doto         → variable --font-doto         (next/font/google, weights 500/700)
+   Le site est sombre par défaut : poser `class="dark"` sur <html>.
+   ========================================================================== */
+
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* --------------------------------------------------------------------------
+   Tokens sémantiques shadcn
+   Les noms shadcn ne sont jamais renommés : les primitives ajoutées avec
+   `npx shadcn add` prennent le style du portfolio sans modification.
+   :root et .dark partagent les valeurs tant qu'il n'y a pas de thème clair.
+   -------------------------------------------------------------------------- */
+:root,
+.dark {
+  /* Forme — sm 4 · md 6 · lg 8. Jamais rounded-xl. 0 sur un élément chanfreiné. */
+  --radius: 0.5rem;
+
+  /* Surfaces & texte (gris légèrement bleutés, jamais noir pur) */
+  --background: #0a0d14; /* vide */
+  --foreground: #e4eaf4; /* texte — 16.08:1 */
+  --card: #0a0d14; /* fiche projet : cadre fin, pas de fond */
+  --card-foreground: #e4eaf4;
+  --popover: #111620; /* tooltip, menu */
+  --popover-foreground: #e4eaf4;
+
+  /* Bleu primaire : état actif, sélection, liaison en flux */
+  --primary: #0072ec; /* 4.27:1 sur le fond → traits, texte ≥ 24 px */
+  --primary-foreground: #ffffff; /* 4.55:1 sur primaire */
+
+  --secondary: #19202d;
+  --secondary-foreground: #e4eaf4;
+  --muted: #111620;
+  --muted-foreground: #8d98ad; /* texte secondaire — 6.69:1 */
+
+  /* Chez shadcn, accent = fond de survol (ghost, outline, menu).
+     Ce n'est PAS la couleur de marque : celle-ci est --primary. */
+  --accent: #19202d;
+  --accent-foreground: #e4eaf4;
+
+  /* Seule exception à la palette gris + bleu : erreurs et actions destructrices.
+     Le blanc sur ce rouge échoue (3.37:1) → bouton destructif teinté, jamais plein. */
+  --destructive: #f2555a; /* 5.76:1 sur le fond */
+
+  --border: #263044;
+  --input: #263044;
+  --ring: #6aabff; /* utilisé à 50 % */
+
+  /* Graphiques éventuels — restent dans la palette */
+  --chart-1: #0072ec;
+  --chart-2: #6aabff;
+  --chart-3: #0b2c57;
+  --chart-4: #8d98ad;
+  --chart-5: #566179;
+
+  /* Sidebar (non utilisée, alignée pour compatibilité shadcn) */
+  --sidebar: #0a0d14;
+  --sidebar-foreground: #e4eaf4;
+  --sidebar-primary: #0072ec;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #19202d;
+  --sidebar-accent-foreground: #e4eaf4;
+  --sidebar-border: #263044;
+  --sidebar-ring: #6aabff;
+
+  /* ---- Extensions propres au portfolio ---- */
+  --surface: #111620; /* = muted */
+  --surface-2: #19202d; /* = secondary / accent */
+  --faint: #566179; /* 3.13:1 → points éteints, filets, désactivé. Jamais du texte lisible. */
+  --dot-off: #141a26; /* point éteint de la matrice */
+
+  /* Échelle bleue — une teinte, huit rôles */
+  --brand-100: #e0edff; /* texte sur fond primaire, très rare */
+  --brand-200: #a8ccff; /* texte actif sur fond sélectionné */
+  --brand-300: #6aabff; /* texte & chiffres actifs — 8.22:1 */
+  --brand-400: #3d8ef7; /* liens, libellés de relation — 5.93:1 */
+  --brand-500: #0072ec; /* primaire */
+  --brand-600: #0a4e9e; /* pic du shimmer de chargement */
+  --brand-700: #0b2c57; /* fond d'un élément sélectionné, base du squelette */
+  --brand-800: #081a33; /* zone de chargement */
+
+  /* Coin chanfreiné (signature) */
+  --chamfer: 8px; /* boutons, filtres */
+  --chamfer-lg: 12px; /* cartes, panneaux */
+}
+
+/* --------------------------------------------------------------------------
+   Mapping Tailwind
+   -------------------------------------------------------------------------- */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-faint: var(--faint);
+  --color-dot-off: var(--dot-off);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+
+  /* Trois voix typographiques */
+  --font-sans:
+    var(--font-geist-sans), 'Geist', ui-sans-serif, system-ui, sans-serif; /* discours */
+  --font-mono:
+    var(--font-geist-mono), 'Geist Mono', ui-monospace, monospace; /* donnée */
+  --font-dot:
+    var(--font-doto), 'Doto', ui-monospace, monospace; /* signal + libellés des primitives */
+
+  /* Échelle typographique (taille / interlignage) */
+  --text-signal-xl: 5.5rem;
+  --text-signal-xl--line-height: 1; /* 88 — nom, ouverture */
+  --text-signal: 2.5rem;
+  --text-signal--line-height: 1; /* 40 — numéro de période, titre de section */
+  --text-h2: 1.75rem;
+  --text-h2--line-height: 2.125rem; /* 28 / 34 */
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.75rem; /* 20 / 28 */
+  --text-body: 1rem;
+  --text-body--line-height: 1.625rem; /* 16 / 26 */
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.375rem; /* 14 / 22 */
+  --text-data: 0.8125rem;
+  --text-data--line-height: 1.25rem; /* 13 / 20 — mono */
+  --text-label: 0.75rem;
+  --text-label--line-height: 1rem; /* 12 / 16 — mono */
+
+  --radius-sm: calc(var(--radius) - 4px); /* 4 */
+  --radius-md: calc(var(--radius) - 2px); /* 6 */
+  --radius-lg: var(--radius); /* 8 — maximum */
+
+  /* Mouvement — chaque animation porte un sens */
+  --ease-system: cubic-bezier(0.2, 0, 0, 1);
+  --animate-shimmer: shimmer 1.6s linear infinite; /* chargement uniquement */
+  --animate-dots-flow: dots-flow 0.9s linear infinite; /* liaison SVG en flux (A → B) */
+  --animate-dots-x: dots-x 0.9s linear infinite; /* liaison CSS horizontale en flux */
+  --animate-dots-y: dots-y 0.9s linear infinite; /* axe vertical de la période active */
+  --animate-build: build 240ms var(--ease-system) both; /* apparition d'un composant chargé */
+  --animate-chase: chase 1.2s linear infinite; /* matrice 3×3 */
+  --animate-ripple: ripple 1.2s ease-in-out infinite; /* matrice 3×3 */
+
+  @keyframes shimmer {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+  @keyframes dots-flow {
+    to {
+      stroke-dashoffset: -12;
+    }
+  }
+  @keyframes dots-x {
+    to {
+      background-position: 6px 0;
+    }
+  }
+  @keyframes dots-y {
+    to {
+      background-position: 0 6px;
+    }
+  }
+  @keyframes build {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes chase {
+    0% {
+      background-color: var(--foreground);
+    }
+    35%,
+    100% {
+      background-color: var(--surface-2);
+    }
+  }
+  @keyframes ripple {
+    0%,
+    100% {
+      background-color: var(--surface-2);
+    }
+    40% {
+      background-color: var(--foreground);
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+@layer base {
+  * {
+    @apply border-border outline-ring/60;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  ::selection {
+    background: var(--brand-700);
+    color: var(--brand-100);
+  }
+  /* Une modale ouverte (`<dialog>` natif) fige le défilement de la page. */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Utilitaires de signature
+   -------------------------------------------------------------------------- */
+
+/* Coin chanfreiné : haut-droit + bas-gauche, angles vifs.
+   Pour un élément non focusable (image, bloc décoratif). */
+@utility chamfer {
+  border-radius: 0;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chamfer)) 0,
+    100% var(--chamfer),
+    100% 100%,
+    var(--chamfer) 100%,
+    0 calc(100% - var(--chamfer))
+  );
+}
+
+@utility chamfer-lg {
+  --chamfer: var(--chamfer-lg);
+  border-radius: 0;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chamfer)) 0,
+    100% var(--chamfer),
+    100% 100%,
+    var(--chamfer) 100%,
+    0 calc(100% - var(--chamfer))
+  );
+}
+
+/* Cadre chanfreiné de 1 px dessiné par pseudo-éléments : l'élément n'est pas
+   clippé, ses enfants (tooltips, focus) restent visibles. Utilisé par Card.
+   Personnalisable : --chamfer-border, --chamfer-fill. */
+@utility chamfer-frame {
+  position: relative;
+  isolation: isolate;
+  border-radius: 0;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--chamfer-border, var(--border));
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--chamfer)) 0,
+      100% var(--chamfer),
+      100% 100%,
+      var(--chamfer) 100%,
+      0 calc(100% - var(--chamfer))
+    );
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    background: var(--chamfer-fill, var(--card));
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--chamfer) + 0.4px) 0,
+      100% calc(var(--chamfer) - 0.4px),
+      100% 100%,
+      calc(var(--chamfer) - 0.4px) 100%,
+      0 calc(100% - var(--chamfer) + 0.4px)
+    );
+  }
+}
+
+/* Bouton chanfreiné, toutes variantes. clip-path couperait le ring shadcn
+   (box-shadow) : le fond est dessiné par ::after, la bordure de 1 px par
+   ::before (cadre évidé, le fond peut donc être translucide). Au focus, ce
+   cadre déborde de 3 px et prend la couleur de l'anneau.
+   Personnalisable : --button-fill, --button-border, --button-ring. */
+@utility chamfer-button {
+  position: relative;
+  isolation: isolate;
+  border-radius: 0;
+  background: transparent;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: var(--button-fill, transparent);
+    transition: background-color 120ms var(--ease-system);
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--chamfer)) 0,
+      100% var(--chamfer),
+      100% 100%,
+      var(--chamfer) 100%,
+      0 calc(100% - var(--chamfer))
+    );
+  }
+  /* Cadre chanfreiné d'épaisseur --_t ; chanfrein intérieur ≈ --_co - 0.586 × --_t. */
+  &::before {
+    --_co: var(--chamfer);
+    --_t: 1px;
+    --_ci: calc(var(--_co) - var(--_t) * 0.586);
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--button-border, transparent);
+    transition: background-color 120ms var(--ease-system);
+    clip-path: polygon(
+      evenodd,
+      0 0,
+      calc(100% - var(--_co)) 0,
+      100% var(--_co),
+      100% 100%,
+      var(--_co) 100%,
+      0 calc(100% - var(--_co)),
+      0 0,
+      var(--_t) var(--_t),
+      var(--_t) calc(100% - var(--_t) - var(--_ci)),
+      calc(var(--_t) + var(--_ci)) calc(100% - var(--_t)),
+      calc(100% - var(--_t)) calc(100% - var(--_t)),
+      calc(100% - var(--_t)) calc(var(--_t) + var(--_ci)),
+      calc(100% - var(--_t) - var(--_ci)) var(--_t),
+      var(--_t) var(--_t)
+    );
+  }
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+  &:focus-visible::before {
+    --_co: calc(var(--chamfer) + 1.76px);
+    --_t: 4px;
+    inset: -3px;
+    background: var(
+      --button-ring,
+      color-mix(in oklab, var(--ring) 60%, transparent)
+    );
+  }
+}
+
+/* Trame de points (fond de capture, zone vide, contour de chargement) */
+@utility dot-grid {
+  background-image: radial-gradient(
+    circle,
+    var(--surface-2) 1px,
+    transparent 1.2px
+  );
+  background-size: 8px 8px;
+}
+
+/* Liaison horizontale en points (CSS). Couleur : --dots-color. */
+@utility dots-x {
+  height: 2px;
+  background-image: radial-gradient(
+    circle,
+    var(--dots-color, var(--faint)) 1px,
+    transparent 1.2px
+  );
+  background-size: 6px 2px;
+}
+
+/* Liaison verticale en points (axe de la timeline). */
+@utility dots-y {
+  width: 2px;
+  background-image: radial-gradient(
+    circle,
+    var(--dots-color, var(--border)) 1px,
+    transparent 1.2px
+  );
+  background-size: 2px 6px;
+}
+
+/* Squelette : trame de points traversée par le shimmer, dans le bleu seul.
+   La taille du bloc = la taille exacte du contenu attendu. */
+@utility skeleton-dots {
+  background: linear-gradient(
+    90deg,
+    var(--brand-700) 0%,
+    var(--brand-700) 30%,
+    var(--brand-600) 50%,
+    var(--brand-700) 70%,
+    var(--brand-700) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-mask-image: radial-gradient(circle, #000 1.3px, transparent 1.6px);
+  mask-image: radial-gradient(circle, #000 1.3px, transparent 1.6px);
+  -webkit-mask-size: 4px 4px;
+  mask-size: 4px 4px;
+  animation: var(--animate-shimmer);
+}

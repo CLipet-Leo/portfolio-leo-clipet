@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794356581797,
+      "tag": "0000_true_johnny_storm",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794426498584,
+      "tag": "0001_chronological_periods",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794426499057,
+      "tag": "0002_drop_period_shape",
+      "breakpoints": true
+    }
+  ]
+}

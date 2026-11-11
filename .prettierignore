@@ -1,18 +1,20 @@
-# Fichiers de config
-*.config.*
-*.rc
-*.json
-*.mjs
-*.cjs
-*.js
-*.ts
-
-# Dossiers d'environnement
-node_modules/
+# Générés
 .next/
-.vscode/
-.vercel/
-build/
 out/
+build/
 coverage/
+next-env.d.ts
+public/sitemap*.xml
+public/robots.txt
+public/fonts/
+drizzle/
+
+# Dépendances
+pnpm-lock.yaml
+
+# Environnement
 .env*
+
+# Skills tiers (gérés par `skills add`)
+.claude/skills/
+skills-lock.json

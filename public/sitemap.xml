@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<sitemap><loc>https://clipet-leo.dev/sitemap-0.xml</loc></sitemap>
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://clipet-leo.dev</loc><lastmod>2026-11-11T21:25:26.954Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/2048</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/albedya</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/bases-de-donnees</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/bigsword-rpg</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/coriumengine</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/cryptique</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/demineur</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/moteur-directx-12</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/portfolio-perso</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/rendering-gdi-sfml</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/rocket-bowling</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/serveur-oracle</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/site-garage-moto</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/sites-web</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/steganography-cpp</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/unity-shader-vfx</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/(.)projets/unreal-blueprints</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/2048</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/albedya</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/bases-de-donnees</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/bigsword-rpg</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/coriumengine</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/cryptique</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/demineur</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/moteur-directx-12</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/portfolio-perso</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/rendering-gdi-sfml</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/rocket-bowling</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/serveur-oracle</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/site-garage-moto</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/sites-web</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/steganography-cpp</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/unity-shader-vfx</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://clipet-leo.dev/projets/unreal-blueprints</loc><lastmod>2026-11-11T21:25:26.955Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+</urlset>

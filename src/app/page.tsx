@@ -1,22 +1,15 @@
-import { AboutSection } from '@/components/layout/AboutSection';
-import { ContactSection } from '@/components/layout/ContactSection';
-import { GithubStatsSection } from '@/components/layout/GithubStatsSection';
-import { HomeSection } from '@/components/layout/HomeSection';
-import { ProjectsSection } from '@/components/layout/ProjectsSection';
-import { SkillsSection } from '@/components/layout/SkillSection';
+import { ClosingSection } from '@/components/sections/closing-section';
+import { OpeningSection } from '@/components/sections/opening-section';
+import { SkillsSection } from '@/components/sections/skills-section';
+import { TimelineSection } from '@/components/sections/timeline-section';
 
-/**
- * HomePage Component
- */
 export default function HomePage() {
   return (
-    <div>
-      <HomeSection />
-      <AboutSection />
+    <div className="flex flex-col items-center">
+      <OpeningSection />
+      <TimelineSection />
       <SkillsSection />
-      <GithubStatsSection />
-      <ProjectsSection />
-      <ContactSection />
+      <ClosingSection />
     </div>
   );
 }

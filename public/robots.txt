@@ -1,6 +1,7 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /lab
 
 # Host
 Host: https://clipet-leo.dev
