@@ -21,7 +21,7 @@ Tailwind CSS 4 et Three.js via React Three Fiber.
   icônes Lucide.
 - L'alias TypeScript `@/*` cible `src/*` (voir `tsconfig.json`).
 
-Note : Les fichiers de polices sont chargés via `next/font/local` dans `layout.tsx`. La direction visuelle est fixée dans `docs/design-system.md`. (Note : les primitives `button`, `badge`, `card` et `separator` suivent les recettes de `docs/composants.md` ; les sections et les scènes Three.js utilisent la palette et la typographie « Schéma », mais leurs textes, la matrice de points et la timeline ne sont pas encore livrés. Suivi : `docs/plan-migration.md`.)
+Note : Les fichiers de polices sont chargés via `next/font/local` dans `layout.tsx`. La direction visuelle est fixée dans `docs/design-system.md`. (Note : les primitives `button`, `badge`, `card` et `separator` suivent les recettes de `docs/composants.md` ; les sections et les scènes Three.js utilisent la palette et la typographie « Schéma », mais leurs textes, la matrice de points et la timeline ne sont pas encore livrés.)
 
 ## État actuel et direction cible
 
