@@ -1,6 +1,6 @@
 import NotFoundScene from '@/components/three/not-found-scene';
 import { Button } from '@/components/ui/button';
-import { ExternalLinkIcon } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 export default function NotFoundPage() {
@@ -23,8 +23,8 @@ export default function NotFoundPage() {
         </p>
         <Button asChild className="mt-1">
           <Link href="/">
+            <ArrowLeft data-icon="inline-start" />
             Retour à l'accueil
-            <ExternalLinkIcon className="size-4" />
           </Link>
         </Button>
       </div>
