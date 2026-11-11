@@ -35,3 +35,6 @@ jobs:
           HEAD: ${{ github.event.pull_request.head.sha }}
       - run: pnpm check # conventions, types, lint, formatage, tests
       - run: pnpm build
+        env:
+          # Le build lit le contenu en base (src/db/queries.ts).
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}

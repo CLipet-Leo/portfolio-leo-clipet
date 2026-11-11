@@ -1,11 +1,11 @@
 'use client';
 
-import { IProject } from '@/types/types';
+import type { ProjectSummary } from '@/db/queries';
 import { motion, useReducedMotion } from 'motion/react';
 import { Badge } from '../badge';
 
 interface IProjectCardProps {
-  project: IProject;
+  project: ProjectSummary;
   index?: number;
   alt?: boolean;
 }
@@ -16,6 +16,7 @@ export const ProjectCard = ({
   alt = false,
 }: IProjectCardProps) => {
   const reduced = useReducedMotion();
+  const capture = project.media.at(0);
 
   return (
     <motion.article
@@ -29,9 +30,9 @@ export const ProjectCard = ({
     >
       <div className="flex w-full flex-col justify-center lg:w-2/5">
         <div className="mb-3 flex flex-wrap gap-1.5">
-          {project.tags.slice(0, 4).map((tag, i) => (
-            <Badge key={i} variant="secondary">
-              {tag}
+          {project.skills.slice(0, 4).map(({ skill }) => (
+            <Badge key={skill.id} variant="secondary">
+              {skill.name}
             </Badge>
           ))}
         </div>
@@ -41,16 +42,18 @@ export const ProjectCard = ({
         </h3>
 
         <p className="max-w-sm text-small text-muted-foreground">
-          {project.description}
+          {project.goal}
         </p>
       </div>
 
       <div className="aspect-video w-full chamfer-lg dot-grid lg:w-3/5">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="h-full w-full object-cover"
-        />
+        {capture && (
+          <img
+            src={capture.src}
+            alt={capture.alt}
+            className="h-full w-full object-cover"
+          />
+        )}
       </div>
     </motion.article>
   );

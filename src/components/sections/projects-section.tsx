@@ -1,10 +1,12 @@
 import { ProjectCard } from '@/components/ui/projects/project-card';
-import projects from '@/data/projects.json';
 import { Button } from '@/components/ui/button';
 import { ExternalLink } from '@/components/ui/external-link';
+import { getProjects } from '@/db/queries';
 import { ArrowUpRight } from 'lucide-react';
 
-export const ProjectsSection = () => {
+export const ProjectsSection = async () => {
+  const projects = await getProjects();
+
   return (
     <section id="projects" className="relative px-4 py-24">
       <div className="mx-auto w-full max-w-6xl md:container 2xl:max-w-7xl">
@@ -21,7 +23,7 @@ export const ProjectsSection = () => {
         <div className="flex flex-col gap-20 md:gap-28">
           {projects.map((project, key) => (
             <ProjectCard
-              key={key}
+              key={project.slug}
               project={project}
               index={key}
               alt={key % 2 !== 0}

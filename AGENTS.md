@@ -14,8 +14,14 @@ Tailwind CSS 4 et Three.js via React Three Fiber.
 
 - `src/app/` contient les routes et API Next.js ; `src/components/` regroupe
   `layout/`, `sections/`, `three/` et `ui/`.
-- `src/data/` contient `projects.json` et `skills.json` ; leurs clés et les types
-  correspondants dans `src/types/types.d.ts` sont actuellement en anglais.
+- `src/db/` contient le schéma Drizzle (`schema.ts`), la connexion Neon
+  (`index.ts`), les lectures en cache (`queries.ts`) et le contenu initial
+  (`seed.ts`). Projets, compétences et périodes vivent en base (PostgreSQL chez
+  Neon), plus dans des JSON ; les types sont tirés du schéma
+  (`$inferSelect`), pas écrits à la main. Les migrations sont dans `drizzle/`.
+- Lecture côté serveur seulement, par des fonctions `'use cache'` étiquetées
+  `contenu` (`cacheComponents: true`) ; `POST /api/revalidate`, protégée par
+  `REVALIDATE_SECRET`, rafraîchit ce cache. Le build a besoin de `DATABASE_URL`.
 - `src/app/global.css` contient les jetons CSS et la configuration Tailwind.
   `components.json` documente shadcn/ui : alias `@/components/ui`, style `new-york`,
   icônes Lucide.
@@ -83,8 +89,22 @@ Le projet utilise pnpm via Corepack, avec la version indiquée dans `package.jso
 - `corepack pnpm typecheck` — types générés par `next typegen` puis `tsc`.
 - `corepack pnpm lint` / `lint:fix` — ESLint (config Next.js officielle).
 - `corepack pnpm format` / `format:check` — Prettier (tri des classes Tailwind).
-- `corepack pnpm build` — build Next.js puis sitemap (`next-sitemap`).
+- `corepack pnpm build` — build Next.js puis sitemap (`next-sitemap`) ; lit la
+  base, donc demande `DATABASE_URL`.
+- `corepack pnpm db:generate` — migration SQL depuis `src/db/schema.ts`.
+- `corepack pnpm db:migrate` — applique les migrations de `drizzle/`.
+- `corepack pnpm db:seed` — insère le contenu initial sans écraser l'existant.
 
 Le script `test` ne couvre que `scripts/` : l'application n'a pas de suite de
 tests. Ne pas en annoncer une sans l'avoir ajoutée ; lancer les vérifications
 ciblées appropriées au changement.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

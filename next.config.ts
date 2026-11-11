@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
   // Optimisation de la compilation
   reactStrictMode: true,
 
+  // Active `'use cache'`, `cacheTag` et `cacheLife` (src/db/queries.ts)
+  cacheComponents: true,
+  partialPrefetching: true,
+
   // Support de Tailwind CSS v4
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-separator'],

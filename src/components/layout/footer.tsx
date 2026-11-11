@@ -1,8 +1,13 @@
 import { ArrowUp } from 'lucide-react';
+import { cacheLife } from 'next/cache';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 
-export const Footer = () => {
+export const Footer = async () => {
+  // L'année courante est une valeur instable : elle est mise en cache.
+  'use cache';
+  cacheLife('days');
+
   return (
     <footer className="border-t border-border bg-background py-8">
       <div className="container mx-auto px-4">

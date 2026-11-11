@@ -70,18 +70,18 @@ la page d'accueil, suffixe `-section`), `three/` (scènes R3F, suffixe `-scene`)
 
 Vérifiés par ESLint (`@typescript-eslint/naming-convention`) :
 
-| Élément                          | Convention               | Exemple                         |
-| -------------------------------- | ------------------------ | ------------------------------- |
-| Variables, fonctions, paramètres | camelCase                | `projectCount`, `formatDate()`  |
-| Composants React                 | PascalCase               | `ProjectCard`, `Comp`           |
-| Constantes de module             | UPPER_SNAKE_CASE         | `CANVAS_STYLE`, `MAX_LENGTH`    |
-| Interfaces                       | `I` + PascalCase         | `IProject`, `IProjectCardProps` |
-| Enums                            | `E` + PascalCase         | `EStatus`                       |
-| Classes, types                   | PascalCase               | `ContactError`, `CheckType`     |
-| Paramètres génériques            | `T`, ou `T` + PascalCase | `T`, `TItem`                    |
-| Membres d'enum                   | PascalCase               | `EStatus.NotFound`              |
-| Hooks                            | `use` + PascalCase       | `useReducedMotion`              |
-| Inutilisé volontairement         | préfixe `_`              | `_event`                        |
+| Élément                          | Convention               | Exemple                        |
+| -------------------------------- | ------------------------ | ------------------------------ |
+| Variables, fonctions, paramètres | camelCase                | `projectCount`, `formatDate()` |
+| Composants React                 | PascalCase               | `ProjectCard`, `Comp`          |
+| Constantes de module             | UPPER_SNAKE_CASE         | `CANVAS_STYLE`, `MAX_LENGTH`   |
+| Interfaces                       | `I` + PascalCase         | `IProjectCardProps`            |
+| Enums                            | `E` + PascalCase         | `EStatus`                      |
+| Classes, types                   | PascalCase               | `ContactError`, `CheckType`    |
+| Paramètres génériques            | `T`, ou `T` + PascalCase | `T`, `TItem`                   |
+| Membres d'enum                   | PascalCase               | `EStatus.NotFound`             |
+| Hooks                            | `use` + PascalCase       | `useReducedMotion`             |
+| Inutilisé volontairement         | préfixe `_`              | `_event`                       |
 
 L'UPPER_SNAKE_CASE n'est accepté qu'au niveau du module : une constante locale à
 une fonction est en camelCase ou remontée au niveau du module.
