@@ -2,6 +2,7 @@
 import { NextResponse } from 'next/server';
 
 const GH_USER = 'CLipet-Leo';
+const MAX_CONCURRENCY = 5;
 
 async function fetchJson<T>(url: string, token?: string) {
   const res = await fetch(url, {
@@ -43,7 +44,6 @@ export async function GET() {
     // Récup commits via endpoint contributors (compte contributions user sur la branche par défaut)
     async function sumCommits() {
       const own = repos.filter((r) => !r.fork);
-      const MAX_CONCURRENCY = 5;
       let idx = 0;
       let total = 0;
 

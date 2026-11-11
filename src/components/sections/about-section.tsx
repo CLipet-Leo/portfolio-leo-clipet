@@ -40,18 +40,18 @@ export const AboutSection = () => {
       <div className="container mx-auto max-w-5xl">
         <div className="max-w-[65ch]">
           <motion.h2
-            className="font-dot text-signal mb-10 font-bold lowercase"
+            className="mb-10 font-dot text-signal font-bold lowercase"
             {...reveal(0)}
           >
             Qui Suis-je
           </motion.h2>
 
-          <motion.h3 className="text-h3 mb-4 font-semibold" {...reveal(0.05)}>
+          <motion.h3 className="mb-4 text-h3 font-semibold" {...reveal(0.05)}>
             Développeur Logiciel Passionné
           </motion.h3>
 
           <motion.p
-            className="text-muted-foreground mb-5 leading-relaxed"
+            className="mb-5 leading-relaxed text-muted-foreground"
             {...reveal(0.1)}
           >
             J'ai suivi un cursus de 3 ans en développement web, applications et
@@ -61,7 +61,7 @@ export const AboutSection = () => {
           </motion.p>
 
           <motion.p
-            className="text-muted-foreground mb-12 leading-relaxed"
+            className="mb-12 leading-relaxed text-muted-foreground"
             {...reveal(0.15)}
           >
             J'aime découvrir et créer des solutions efficaces à des problèmes
@@ -74,18 +74,18 @@ export const AboutSection = () => {
             {specialties.map((spec, i) => (
               <motion.div
                 key={spec.label}
-                className="border-border border-t py-6"
+                className="border-t border-border py-6"
                 {...reveal(0.2 + i * 0.04)}
               >
-                <p className="text-label text-muted-foreground mb-2 font-mono lowercase">
+                <p className="mb-2 font-mono text-label text-muted-foreground lowercase">
                   {spec.label}
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="leading-relaxed text-muted-foreground">
                   {spec.description}
                 </p>
               </motion.div>
             ))}
-            <div className="border-border border-t" />
+            <div className="border-t border-border" />
           </div>
         </div>
       </div>

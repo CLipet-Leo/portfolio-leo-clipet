@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { NavLink } from '../ui/NavLink';
+import { NavLink } from '../ui/nav-link';
 
 const navItems = [
   { name: 'À propos', href: '#about' },
@@ -48,13 +48,13 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        'ease-system fixed top-0 left-0 z-50 w-full transition-[background-color,padding] duration-[120ms]',
+        'fixed top-0 left-0 z-50 w-full transition-[background-color,padding] duration-[120ms] ease-system',
         showScrolledStyles ? 'bg-background/80 py-3 backdrop-blur-md' : 'py-5',
       )}
     >
       <div className="container mx-auto flex items-center justify-between px-4">
         <Link
-          className="font-dot text-foreground flex items-center text-xl font-bold lowercase"
+          className="flex items-center font-dot text-xl font-bold text-foreground lowercase"
           href="/"
         >
           Leo's Portfolio
@@ -71,7 +71,7 @@ export const Navbar = () => {
 
         {/* Mobile navigation */}
         <button
-          className="text-foreground fixed top-4 right-4 z-70 p-2 md:hidden"
+          className="fixed top-4 right-4 z-70 p-2 text-foreground md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
         >
@@ -80,8 +80,8 @@ export const Navbar = () => {
 
         <div
           className={cn(
-            'bg-background/90 fixed inset-0 z-60 flex flex-col items-center justify-center backdrop-blur-md',
-            'ease-system transition-opacity duration-[120ms] md:hidden',
+            'fixed inset-0 z-60 flex flex-col items-center justify-center bg-background/90 backdrop-blur-md',
+            'transition-opacity duration-[120ms] ease-system md:hidden',
             isMenuOpen
               ? 'pointer-events-auto opacity-100'
               : 'pointer-events-none opacity-0',

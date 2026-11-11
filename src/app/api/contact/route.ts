@@ -2,8 +2,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 function validateEmail(v: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 }
@@ -53,16 +51,17 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Champs invalides' }, { status: 400 });
     }
 
+    const apiKey = process.env.RESEND_API_KEY;
     const to = process.env.CONTACT_TO;
     const from = process.env.CONTACT_FROM || 'onboarding@resend.dev';
-    if (!to) {
+    if (!apiKey || !to) {
       return NextResponse.json(
-        { error: 'CONTACT_TO non configuré' },
+        { error: 'RESEND_API_KEY ou CONTACT_TO non configuré' },
         { status: 500 },
       );
     }
 
-    await resend.emails.send({
+    await new Resend(apiKey).emails.send({
       from,
       to,
       subject: subject,

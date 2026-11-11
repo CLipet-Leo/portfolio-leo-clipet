@@ -1,6 +1,6 @@
-import { AboutSection } from '@/components/sections/AboutSection';
-import { HeroSection } from '@/components/sections/HeroSection';
-import { ProjectsSection } from '@/components/sections/ProjectsSection';
+import { AboutSection } from '@/components/sections/about-section';
+import { HeroSection } from '@/components/sections/hero-section';
+import { ProjectsSection } from '@/components/sections/projects-section';
 
 /**
  * HomePage Component

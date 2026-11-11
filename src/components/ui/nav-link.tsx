@@ -13,7 +13,7 @@ export function NavLink({
     <Link
       href={href}
       onClick={onClick}
-      className="text-muted-foreground hover:text-foreground ease-system transition-colors duration-[120ms]"
+      className="text-muted-foreground transition-colors duration-[120ms] ease-system hover:text-foreground"
     >
       {children && <span>{children}</span>}
     </Link>

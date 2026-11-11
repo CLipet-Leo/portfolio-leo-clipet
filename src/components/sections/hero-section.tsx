@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
-import { HeroScene } from '../three/HeroScene';
+import { HeroScene } from '../three/hero-scene';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 
@@ -36,10 +36,10 @@ export const HeroSection = () => {
             animate="visible"
           >
             <motion.p
-              className="text-label text-muted-foreground font-mono"
+              className="font-mono text-label text-muted-foreground"
               variants={itemVariants}
             >
-              // développeur full-stack & systèmes
+              {'// développeur full-stack & systèmes'}
             </motion.p>
             <motion.h1
               className="font-dot text-signal font-bold lowercase"
@@ -52,7 +52,7 @@ export const HeroSection = () => {
               ont du relief.
             </motion.h1>
             <motion.p
-              className="text-small text-muted-foreground max-w-[340px]"
+              className="max-w-[340px] text-small text-muted-foreground"
               variants={itemVariants}
             >
               Du bas niveau au web, des interfaces soignées,
@@ -87,8 +87,8 @@ export const HeroSection = () => {
           >
             <HeroScene />
             <div className="pointer-events-none absolute right-0 bottom-6 flex items-center gap-1.5">
-              <span className="bg-faint size-1.5 rounded-full" />
-              <span className="text-label text-muted-foreground font-mono">
+              <span className="size-1.5 rounded-full bg-faint" />
+              <span className="font-mono text-label text-muted-foreground">
                 three.js · r3f
               </span>
             </div>

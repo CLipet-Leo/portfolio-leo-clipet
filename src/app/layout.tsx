@@ -1,5 +1,5 @@
-import { Footer } from '@/components/layout/Footer';
-import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/footer';
+import { Navbar } from '@/components/layout/navbar';
 import localFont from 'next/font/local';
 import { ReactNode } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -85,7 +85,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} ${doto.variable}`}
       >
-        <div className="bg-background text-foreground min-h-screen overflow-x-hidden">
+        <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
           <Navbar />
           <main>{children}</main>
           <Footer />

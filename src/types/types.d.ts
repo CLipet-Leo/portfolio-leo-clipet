@@ -1,6 +1,6 @@
-// src/types/project.d.ts
+// src/types/types.d.ts
 
-export interface Project {
+export interface IProject {
   id: string;
   slug: string;
   title: string;
@@ -10,13 +10,13 @@ export interface Project {
   // content: string;
 }
 
-export interface Skill {
+export interface ISkill {
   name: string;
   level: number; // 1 to 100
   category: string; // e.g., 'Frontend', 'Backend', 'DevOps'
 }
 
-export interface Tags {
+export interface ITags {
   id: string;
   name: string;
   color: string;

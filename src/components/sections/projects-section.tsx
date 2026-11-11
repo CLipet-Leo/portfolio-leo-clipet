@@ -1,18 +1,18 @@
-import { ProjectCard } from '@/components/ui/projects/ProjectCard';
+import { ProjectCard } from '@/components/ui/projects/project-card';
 import projects from '@/data/projects.json';
-import { ExternalLinkIcon } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
+import { ExternalLink } from '@/components/ui/external-link';
+import { ArrowUpRight } from 'lucide-react';
 
 export const ProjectsSection = () => {
   return (
     <section id="projects" className="relative px-4 py-24">
       <div className="mx-auto w-full max-w-6xl md:container 2xl:max-w-7xl">
-        <h2 className="font-dot text-signal mb-4 text-center font-bold lowercase">
+        <h2 className="mb-4 text-center font-dot text-signal font-bold lowercase">
           Projets en Vedette
         </h2>
 
-        <p className="text-muted-foreground mx-auto mb-12 max-w-2xl text-center">
+        <p className="mx-auto mb-12 max-w-2xl text-center text-muted-foreground">
           Voici quelques-uns de mes récents projets. Beaucoup sont des projets
           d'écoles faits entre 1 à 4 semaines. J'essaie toujours d'apporter une
           attention particulière à mes projets ^^
@@ -31,14 +31,10 @@ export const ProjectsSection = () => {
 
         <div className="mt-12 text-center">
           <Button variant="outline" asChild>
-            <Link
-              target="_blank"
-              rel="noreferrer"
-              href="https://github.com/CLipet-Leo"
-            >
-              Mon Github
-              <ExternalLinkIcon className="h-4 w-4" />
-            </Link>
+            <ExternalLink href="https://github.com/CLipet-Leo">
+              Mon GitHub
+              <ArrowUpRight data-icon="inline-end" />
+            </ExternalLink>
           </Button>
         </div>
       </div>

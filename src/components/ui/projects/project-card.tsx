@@ -1,11 +1,11 @@
 'use client';
 
-import { Project } from '@/types/types';
+import { IProject } from '@/types/types';
 import { motion, useReducedMotion } from 'motion/react';
 import { Badge } from '../badge';
 
-interface ProjectCardProps {
-  project: Project;
+interface IProjectCardProps {
+  project: IProject;
   index?: number;
   alt?: boolean;
 }
@@ -14,7 +14,7 @@ export const ProjectCard = ({
   project,
   index = 0,
   alt = false,
-}: ProjectCardProps) => {
+}: IProjectCardProps) => {
   const reduced = useReducedMotion();
 
   return (
@@ -36,16 +36,16 @@ export const ProjectCard = ({
           ))}
         </div>
 
-        <h3 className="text-h2 text-foreground mb-3 font-semibold">
+        <h3 className="mb-3 text-h2 font-semibold text-foreground">
           {project.title}
         </h3>
 
-        <p className="text-small text-muted-foreground max-w-sm">
+        <p className="max-w-sm text-small text-muted-foreground">
           {project.description}
         </p>
       </div>
 
-      <div className="chamfer-lg dot-grid aspect-video w-full lg:w-3/5">
+      <div className="aspect-video w-full chamfer-lg dot-grid lg:w-3/5">
         <img
           src={project.image}
           alt={project.title}

@@ -14,6 +14,21 @@ const RING2_ROTATION: [number, number, number] = [
   Math.PI / 4.5,
 ];
 
+// Tirées une seule fois au chargement du module : le rendu reste pur.
+const PARTICLE_POSITIONS = (() => {
+  const count = 140;
+  const pos = new Float32Array(count * 3);
+  for (let i = 0; i < count; i++) {
+    const r = 2.7 + Math.random() * 1.5;
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+    pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+    pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+    pos[i * 3 + 2] = r * Math.cos(phi);
+  }
+  return pos;
+})();
+
 function Scene() {
   const icoRef = useRef<THREE.Mesh>(null);
   const outerRef = useRef<THREE.Mesh>(null);
@@ -24,18 +39,11 @@ function Scene() {
   const tryY = useRef(0);
 
   const particles = useMemo(() => {
-    const count = 140;
-    const pos = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      const r = 2.7 + Math.random() * 1.5;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-      pos[i * 3 + 2] = r * Math.cos(phi);
-    }
     const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    geo.setAttribute(
+      'position',
+      new THREE.BufferAttribute(PARTICLE_POSITIONS, 3),
+    );
     return new THREE.Points(
       geo,
       new THREE.PointsMaterial({
