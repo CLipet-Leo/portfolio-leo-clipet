@@ -23,7 +23,7 @@ jobs:
         with:
           fetch-depth: 0 # historique complet pour vérifier les commits de la PR
       - uses: pnpm/action-setup@v4 # version lue dans `packageManager`
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: pnpm
