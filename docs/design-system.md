@@ -96,7 +96,7 @@ Trois voix aux rôles stricts.
 | `text-data`      | 13 / 20             | Geist Mono     | Données                             |
 | `text-label`     | 12 / 16             | Geist Mono 500 | Étiquettes                          |
 
-- Titres en casse phrase. Doto et mono en minuscules.
+- Titres en casse phrase. Doto et mono en minuscules ; dans les faits de l'ouverture, les noms propres et les sigles gardent leur majuscule (Lyon, Albedya, TOEIC).
 - Ratio ~2.5:1 entre titre de période (40) et corps (16) : le titre signale, il ne domine pas.
 - Le bleu n'apparaît dans le texte qu'en mono (relations, liens, état actif), jamais sur un titre. Le bouton `link` est donc en mono (`text-data`), seule exception aux libellés Doto des primitives.
 - Le titre d'une fiche projet (`CardTitle`) suit `text-h2` (Geist 600), pas Doto.
@@ -130,7 +130,7 @@ Le sens se lit au mouvement des points : pas de flèche.
 ### Système de points
 
 - **Icônes** : grille de 5 × 5 points (point 4 px, pas 6 ; 2 px dans les puces). Allumé en texte ou `primary`, éteint invisible. Pas d'icône au trait.
-- **Matrice** (visuel 3D) : afficheur de points, pas 12, point 8. Éteint `--dot-off`, allumé `--foreground`, curseur `primary`. La forme change à chaque période (outil → réseau → objet).
+- **Matrice** (visuel 3D) : afficheur de points, pas 12, point 8. Éteint `--dot-off`, allumé `--foreground`, curseur `primary`. La forme change à chaque période ; les formes sont à redéfinir depuis le passage aux périodes chronologiques (§ 10).
 - **Trame** (`dot-grid`) : fonds de capture, zones vides, contour de chargement.
 - **Progression** : rangée de points ; les points atteints passent en `primary`.
 
@@ -207,31 +207,33 @@ Un composant asynchrone apparaît d'abord comme son propre plan, à sa taille r�
 
 ## 8. Structure de la page
 
-- **Ouverture** — nom en Doto (`signal-xl`), une ligne de positionnement, la matrice de points (forme de la période courante, curseur bleu). Densité et son aux bords de l'écran.
-- **Timeline** — axe vertical en points = contenu et navigation. Une section par période : numéro Doto + titre + années. Mini-carte au bord gauche pour sauter directement à une période. Filtre par contexte au-dessus (ToggleGroup : tous, pro, perso, école). Seule la période active anime ses liaisons. Seuls les projets mis en avant y ont une fiche ; un lien « tous les projets » mène à `/projets`.
-- **Fiche projet** (Card) — contexte, puis objectif (projet personnel) ou besoins (projet professionnel) ; rôle, année et durée, stack, part de l'IA, résultat — visibles sans clic. Le schéma d'architecture en nœuds reliés, les captures 16:9 et le récit sont sur la page `/projets/[slug]`, ouverte en modale depuis l'accueil.
+- **Ouverture** — répond à « qui est cette personne ? », sans clic. Nom en Doto (`signal-xl`) ; deux paragraphes en Geist : ce qu'il fait aujourd'hui, puis ce qui l'a amené au code et à Lyon ; une liste de faits en mono (aujourd'hui, formation, langues, ville, projets à côté en colonne) ; « Albedya » y est un lien externe vers le site de l'entreprise ; les quatre compétences, une phrase chacune. La matrice de points (forme de la période courante, curseur bleu) s'y ajoutera. Densité et son aux bords de l'écran.
+- **Timeline** — axe vertical en points = contenu et navigation, dans l'ordre chronologique. Une section par période : numéro Doto + titre + années + un paragraphe. Mini-carte au bord gauche pour sauter directement à une période. Filtre par contexte au-dessus (ToggleGroup : tous, pro, perso, école). Seule la période active anime ses liaisons. Les projets mis en avant y ont une fiche ; les autres projets de la période y ont une ligne (titre, contexte, stack), parce qu'ils ont construit les mêmes compétences. Un lien « tous les projets » mène à `/projets`.
+- **Fiche projet** (Card) — contexte, puis objectif (projet personnel) ou besoins (projet professionnel) ; rôle, année et durée, stack, compétences prouvées, part de l'IA, résultat — visibles sans clic. Le schéma d'architecture en nœuds reliés, les captures 16:9 et le récit (colonne `story`) sont sur la page `/projets/[slug]`, ouverte en modale depuis l'accueil.
 - **Clôture** — contact : e-mail, GitHub, LinkedIn.
 
 ### Périodes
 
-Quatre périodes thématiques, dans cet ordre ; chacune a sa forme dans la matrice de points.
+Quatre périodes chronologiques, calquées sur le parcours d'études. Elles remplacent les quatre thèmes d'origine (outil, jeu, réseau, objet), qui se chevauchaient sur un axe lu comme chronologique.
 
-| #   | Période | Contenu                         | Projets mis en avant                    |
-| --- | ------- | ------------------------------- | --------------------------------------- |
-| 01  | outil   | École, bases bas niveau (C/C++) | —                                       |
-| 02  | jeu     | Unity, Unreal Engine 5          | Cryptique                               |
-| 03  | réseau  | Architecture, serveurs          | Serveur Oracle                          |
-| 04  | objet   | 3D temps réel                   | Albedya, moteur de jeu C++ / DirectX 12 |
+| #   | Période    | Années          | Contenu                                                   | Projets mis en avant aujourd'hui                 |
+| --- | ---------- | --------------- | --------------------------------------------------------- | ------------------------------------------------ |
+| 01  | bases      | 2022 – 2023     | 1re année : web, algorithmique, C, bases de données       | —                                                |
+| 02  | bas niveau | 2023 – 2024     | 2e année : C et C++ natifs, moteur de jeu, 1er stage      | —                                                |
+| 03  | jeu        | 2024 – 2025     | 3e année : C#, Unity, Unreal Engine 5, bachelor, 2e stage | —                                                |
+| 04  | produit    | 2025 – en cours | 4e et 5e années : alternance Albedya, master              | Albedya, CoriumEngine, Cryptique, Serveur Oracle |
 
-- **Dates** : chaque projet porte une année de début et une durée approximative (« 10 mois », « 2 ans »), affichées ensemble : `2024 · 10 mois`. Pas de mois.
-- **Années d'une période** : déduites de ses projets, de l'année du premier à celle du dernier. Elles ne sont pas saisies à part.
+- **Années d'une période** : saisies sur la période (`year_start`, `year_end` ; `year_end` vide = en cours). Elles ne sont plus déduites des projets, dont l'année n'est pas toujours connue.
+- **Paragraphe d'une période** : colonne `summary` de la période, en base comme le reste. Il porte le fait de formation de l'année et ce que les projets d'école ont apporté.
+- **Rattachement d'un projet** : un projet appartient à une seule période. Un projet qui en traverse plusieurs (Albedya, Cryptique) est rangé dans celle où il compte le plus aujourd'hui ; ses étapes antérieures sont dites dans les paragraphes des périodes concernées et dans son récit.
+- **Dates d'un projet** : année de début et durée approximative (« 10 mois », « 2 ans »), affichées ensemble : `2024 · 10 mois`. Pas de mois.
 
 ### Projets
 
 - **Contexte** : chaque projet est `pro`, `perso` ou `école`. C'est la seule catégorie ; elle sert au filtre de la timeline et de `/projets`. La technologie se lit dans la stack et les compétences, pas dans une catégorie.
-- **Mis en avant** : Albedya (pro), Cryptique (école), serveur Oracle (perso), moteur de jeu C++ / DirectX 12 (perso). Eux seuls ont une fiche sur l'accueil.
+- **Mis en avant** : pas de liste fixe. Tout projet publié peut l'être, dans n'importe quelle période, par sa colonne `featured` en base ; les projets mis en avant ont une fiche sur l'accueil. Un fait pas encore saisi (rôle, année, durée, ia, résultat) n'empêche pas la publication : sa ligne est simplement absente de la fiche.
 - **Autres projets** : listés sur `/projets` seulement, en tableau compact filtrable par contexte (titre, année et durée, contexte, stack en mono), sans image. Les projets mis en avant y figurent aussi.
-- **Albedya** : chaque fait publié est validé selon ce que l'employeur autorise.
+- **Albedya** : chaque fait publié est validé selon ce que l'employeur autorise. Les avancées publiques (import IFC, EnergyPlus, refonte et terrain Lidar) se disent en une phrase, sans détail technique interne.
 - **Serveur Oracle** : la fiche décrit l'architecture, jamais les adresses, comptes, ports ou chemins de l'instance.
 
 ### Densité
@@ -245,7 +247,12 @@ Mise en œuvre en CSS seul : attribut `data-densite` sur `<html>` et variantes T
 
 ### Compétences
 
-Pas de niveau chiffré. Une compétence = depuis quand + usage + projets qui la prouvent. Pas de statistiques GitHub.
+Pas de niveau chiffré. Pas de statistiques GitHub. Deux niveaux, distingués par la colonne `kind` :
+
+- **Compétences** (`competence`) — architecture, UX, DevOps, full-stack. Une phrase chacune, affichée dans l'ouverture ; dans la section compétences, la même phrase et les projets qui la prouvent.
+- **Technos** (`techno`) — la stack des projets, groupée par domaine : depuis quand + usage + projets qui la prouvent.
+
+Une compétence ou une techno sans projet publié n'est pas affichée : les petits projets d'école sont donc publiés, ce sont eux qui prouvent les bases.
 
 ### Usage de l'IA
 
@@ -270,8 +277,8 @@ Ambiant optionnel, **coupé par défaut**, indicateur visible (bouton ghost avec
 
 ## 10. Questions ouvertes
 
-- Années et durées réelles de chaque projet (saisies dans la base au lot 1).
-- Captures des projets mis en avant qui n'en ont pas encore (serveur Oracle, moteur DirectX 12).
-- Liste des autres projets publiés sur `/projets`.
-- Ligne de positionnement.
-- Contenu de la ligne « ia » pour chaque projet.
+- Année de début et durée de chaque projet (saisies dans la base) : seules les années des périodes sont connues.
+- Formes de la matrice : une par période, à redéfinir pour les périodes chronologiques.
+- Captures des projets mis en avant qui n'en ont pas encore (Serveur Oracle, CoriumEngine).
+- Stack du site de garage moto.
+- Résultat et ligne « ia » de chaque projet (saisis dans la base).

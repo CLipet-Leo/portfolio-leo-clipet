@@ -27,15 +27,34 @@ Tailwind CSS 4 et Three.js via React Three Fiber.
   icônes Lucide.
 - L'alias TypeScript `@/*` cible `src/*` (voir `tsconfig.json`).
 
-Note : Les fichiers de polices sont chargés via `next/font/local` dans `layout.tsx`. La direction visuelle est fixée dans `docs/design-system.md`. (Note : les primitives `button`, `badge`, `card` et `separator` suivent les recettes de `docs/composants.md` ; les sections et les scènes Three.js utilisent la palette et la typographie « Schéma », mais leurs textes, la matrice de points et la timeline ne sont pas encore livrés.)
+- `src/constants/` contient ce qui ne vit pas en base : `site-meta.ts` (nom,
+  textes et faits de l'ouverture, liens de contact) et
+  `project-context.ts` (libellés et filtre par contexte).
+
+Note : Les fichiers de polices sont chargés via `next/font/local` dans `layout.tsx`. La direction visuelle est fixée dans `docs/design-system.md`. Les primitives de `src/components/ui/` suivent les recettes de `docs/composants.md` ; seules celles qui servent sont ajoutées (`Connector`, `Tabs`, `Spinner`, entre autres, ne le sont pas encore).
 
 ## État actuel et direction cible
 
-La page d'accueil actuelle assemble le hero, la présentation et les projets dans
-`src/app/page.tsx`. Les sections réutilisables utilisent des exports nommés. Le
-hero s'appuie sur `src/components/three/hero-scene.tsx` ; les projets sont rendus par
-des cartes HTML, pas dans un `Canvas`. Les pages d'erreur et API sont dans
-`src/app/`.
+La page d'accueil assemble quatre sections dans `src/app/page.tsx` : ouverture
+(identité, faits, les quatre compétences), timeline chronologique (une section
+par période, mini-carte, filtre par contexte, fiches des projets mis en avant,
+une ligne par autre projet), compétences puis technos en liste, et clôture
+(contact, formulaire branché sur `POST /api/contact`, statut en ligne). Le
+contenu initial de la base suit `docs/presentation.md`. Les sections utilisent des
+exports nommés et sont rendues côté serveur ; seuls le filtre, la mini-carte, la
+modale, le formulaire et le bouton de copie sont des composants client.
+
+- `/projets` liste tous les projets publiés ; `/projets/[slug]` est une page
+  statique par projet (`generateStaticParams`), avec `loading.tsx`.
+- `src/app/@modal/(.)projets/[slug]` intercepte cette route : depuis une autre
+  page du site, la fiche s'ouvre dans le `Dialog` shadcn (`ui/modal.tsx`, sur `ui/dialog.tsx`) et
+  l'URL change ; en accès direct, la page complète est rendue.
+- `error.tsx`, `global-error.tsx` et `not-found.tsx` sont dans `src/app/`.
+- Aucune 3D sur l'accueil pour l'instant : `hero-scene` est supprimée, la
+  matrice de points n'est pas livrée. `three/not-found-scene.tsx` reste jusqu'à
+  ce que la matrice la remplace.
+- Un fait de projet absent de la base (rôle, année, durée, ia, résultat) n'a pas
+  de ligne dans la fiche : ne rien inventer pour la remplir.
 
 La direction historique « Instrument » (palette #1C1B1A / #7CFFB2, deux voix,
 timeline) est remplacée pour les choix visuels par « Schéma » : fond sombre
@@ -43,9 +62,9 @@ timeline) est remplacée pour les choix visuels par « Schéma » : fond sombre
 `docs/design-system.md` conserve l'historique « Instrument » ;
 `docs/design-system.md` fixe la direction visuelle courante,
 `src/app/global.css` les valeurs et `docs/composants.md` les recettes.
-La timeline n'est pas encore livrée : la page d'accueil assemble encore hero,
-présentation et projets. Ne pas décrire les couleurs, la typographie ou les
-composants cibles comme existants tant qu'ils ne le sont pas.
+La matrice de points, le graphe des compétences, la bascule de densité, les
+transitions de route et les raccourcis clavier ne sont pas encore livrés. Ne pas
+décrire les composants cibles comme existants tant qu'ils ne le sont pas.
 
 Les éléments de conception qui ne sont pas explicitement tranchés dans le document
 de direction doivent être clarifiés et consignés avant de coder le comportement
@@ -71,8 +90,10 @@ vérifié par le hook `commit-msg` et par la CI.
   mono pour les données, jamais pour du texte suivi.
 - Le son, s'il est implémenté, reste désactivé par défaut ; pas d'autoplay.
 - Vérifier l'existence des destinations avant d'ajouter ou de modifier des liens.
-  La navigation et certains boutons référencent actuellement des ancres ou routes
-  qui ne sont pas définies dans l'accueil ou l'App Router.
+  Ancres de l'accueil : `#accueil`, `#parcours`, `#periode-<id>`, `#competences`,
+  `#contact`.
+- Un lien `next/link` vers `/projets/[slug]` ouvre la modale ; pour forcer la
+  page complète, utiliser un `<a href>` natif.
 - Utiliser `useFrame` et les primitives R3F pour la scène ; éviter les mises à jour
   React à chaque frame et respecter la propriété/libération des ressources Three.js.
 
@@ -94,6 +115,7 @@ Le projet utilise pnpm via Corepack, avec la version indiquée dans `package.jso
 - `corepack pnpm db:generate` — migration SQL depuis `src/db/schema.ts`.
 - `corepack pnpm db:migrate` — applique les migrations de `drizzle/`.
 - `corepack pnpm db:seed` — insère le contenu initial sans écraser l'existant.
+  Avec `--reset`, vide d'abord périodes, projets et compétences : destructif.
 
 Le script `test` ne couvre que `scripts/` : l'application n'a pas de suite de
 tests. Ne pas en annoncer une sans l'avoir ajoutée ; lancer les vérifications

@@ -250,6 +250,10 @@
     background: var(--brand-700);
     color: var(--brand-100);
   }
+  /* Une modale ouverte (`<dialog>` natif) fige le défilement de la page. */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

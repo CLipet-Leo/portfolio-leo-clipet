@@ -15,13 +15,22 @@ export const projectContext = pgEnum('project_context', [
   'ecole',
 ]);
 
-// Les identifiants sont des textes lisibles (`objet`, `typescript`) : une clé
+// Une compétence (architecture, UX…) se prouve par des projets ; une techno
+// (C++, Next.js…) compose leur stack. Les deux se lient aux projets de la même
+// façon, par `project_skills`.
+export const skillKind = pgEnum('skill_kind', ['competence', 'techno']);
+
+// Les identifiants sont des textes lisibles (`produit`, `typescript`) : une clé
 // étrangère se saisit à la main dans la console de la base.
+// Une période est une tranche du parcours, dans l'ordre chronologique.
 export const periods = pgTable('periods', {
   id: text().primaryKey(),
   number: integer().notNull().unique(),
   title: text().notNull(),
-  shape: text().notNull(),
+  summary: text(),
+  yearStart: integer('year_start'),
+  /** Vide : la période est en cours. */
+  yearEnd: integer('year_end'),
 });
 
 export const projects = pgTable('projects', {
@@ -38,12 +47,15 @@ export const projects = pgTable('projects', {
   duration: text(),
   ai: text(),
   result: text(),
+  /** Récit de la page projet : un paragraphe par ligne vide. */
+  story: text(),
   published: boolean().notNull().default(false),
 });
 
 export const skills = pgTable('skills', {
   id: text().primaryKey(),
   name: text().notNull().unique(),
+  kind: skillKind().notNull().default('techno'),
   domain: text().notNull(),
   since: integer(),
   usage: text(),

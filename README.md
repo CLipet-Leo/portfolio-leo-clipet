@@ -33,8 +33,12 @@ Actions (et Dependabot) du dépôt.
 ```sh
 corepack pnpm db:migrate   # crée ou met à jour les tables
 corepack pnpm db:seed      # contenu initial, sans écraser l'existant
+corepack pnpm db:seed --reset  # vide le contenu puis le réinsère (perd les saisies de la console)
 corepack pnpm db:generate  # après une modification de src/db/schema.ts
 ```
+
+`db:seed` rafraîchit le cache du serveur de développement s'il tourne (port
+`PORT`, 3000 par défaut) ; en production, utiliser la commande ci-dessous.
 
 Le contenu se modifie dans l'éditeur de tables de la console Neon. Il apparaît en
 ligne à l'expiration du cache (une heure), ou tout de suite avec :

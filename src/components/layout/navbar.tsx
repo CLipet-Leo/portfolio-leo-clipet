@@ -1,14 +1,18 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { Button } from '../ui/button';
 import { NavLink } from '../ui/nav-link';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet';
 
 const navItems = [
-  { name: 'À propos', href: '#about' },
-  { name: 'Projets', href: '#projects' },
+  { name: 'Parcours', href: '/#parcours' },
+  { name: 'Compétences', href: '/#competences' },
+  { name: 'Projets', href: '/projets' },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 /**
@@ -21,35 +25,16 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (isMenuOpen) return;
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.documentElement.style.overflow = 'hidden';
-    } else {
-      document.documentElement.style.overflow = '';
-    }
-    return () => {
-      document.documentElement.style.overflow = '';
-    };
-  }, [isMenuOpen]);
-
-  const showScrolledStyles = isScrolled && !isMenuOpen;
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav
       className={cn(
         'fixed top-0 left-0 z-50 w-full transition-[background-color,padding] duration-[120ms] ease-system',
-        showScrolledStyles ? 'bg-background/80 py-3 backdrop-blur-md' : 'py-5',
+        isScrolled ? 'bg-background/80 py-3 backdrop-blur-md' : 'py-5',
       )}
     >
       <div className="container mx-auto flex items-center justify-between px-4">
@@ -70,36 +55,32 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile navigation */}
-        <button
-          className="fixed top-4 right-4 z-70 p-2 text-foreground md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-
-        <div
-          className={cn(
-            'fixed inset-0 z-60 flex flex-col items-center justify-center bg-background/90 backdrop-blur-md',
-            'transition-opacity duration-[120ms] ease-system md:hidden',
-            isMenuOpen
-              ? 'pointer-events-auto opacity-100'
-              : 'pointer-events-none opacity-0',
-          )}
-          aria-hidden={!isMenuOpen}
-        >
-          <div className="flex flex-col space-y-8 text-center text-xl">
-            {navItems.map((item, key) => (
-              <NavLink
-                key={key}
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </NavLink>
-            ))}
-          </div>
-        </div>
+        <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              aria-label="Ouvrir le menu"
+            >
+              <Menu className="size-6" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent aria-describedby={undefined}>
+            <SheetTitle className="sr-only">Menu</SheetTitle>
+            <div className="mt-4 flex flex-col gap-6 text-xl">
+              {navItems.map((item, key) => (
+                <NavLink
+                  key={key}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </NavLink>
+              ))}
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </nav>
   );

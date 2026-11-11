@@ -1,6 +1,5 @@
 import { ArrowUp } from 'lucide-react';
 import { cacheLife } from 'next/cache';
-import Link from 'next/link';
 import { Button } from '../ui/button';
 
 export const Footer = async () => {
@@ -17,9 +16,10 @@ export const Footer = async () => {
           </p>
           <p className="text-sm text-muted-foreground">(っ▀¯▀)つ</p>
           <Button variant="ghost" size="icon" asChild>
-            <Link href="#home" aria-label="Retour en haut">
+            {/* `#top` : haut du document, sur toutes les pages. */}
+            <a href="#top" aria-label="Retour en haut">
               <ArrowUp />
-            </Link>
+            </a>
           </Button>
         </div>
       </div>

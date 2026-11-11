@@ -2,8 +2,6 @@ import { Footer } from '@/components/layout/footer';
 import { Navbar } from '@/components/layout/navbar';
 import localFont from 'next/font/local';
 import { ReactNode } from 'react';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import './global.css';
 
 const geistSans = localFont({
@@ -78,29 +76,32 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+  modal,
+}: {
+  children: ReactNode;
+  /** Slot `@modal` : fiche projet ouverte par-dessus la page (route interceptée). */
+  modal: ReactNode;
+}) {
   return (
     <html lang="fr" className="dark">
       <body
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} ${doto.variable}`}
       >
-        <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+        <a
+          href="#contenu"
+          className="sr-only z-100 bg-background px-4 py-2 font-mono text-data text-foreground focus-visible:not-sr-only focus-visible:fixed focus-visible:top-2 focus-visible:left-2"
+        >
+          aller au contenu
+        </a>
+        <div className="min-h-screen overflow-x-clip bg-background text-foreground">
           <Navbar />
-          <main>{children}</main>
+          <main id="contenu">{children}</main>
           <Footer />
         </div>
-        {/* Toasts global */}
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          newestOnTop
-          closeOnClick
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
+        {modal}
       </body>
     </html>
   );

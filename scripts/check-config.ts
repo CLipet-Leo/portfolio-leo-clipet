@@ -334,10 +334,12 @@ function checkNaming(): void {
   );
   for (const entry of entries) {
     const dir = relative('.', entry.parentPath).replace(/\\/g, '/');
-    // Segments de route Next.js : (groupe), [param], [...slug], _privé, @slot.
-    // Pour un fichier, seul le nom avant le premier point compte.
+    // Segments de route Next.js : (groupe), [param], [...slug], _privé, @slot,
+    // (.)intercepté. Pour un fichier, seul le nom avant le premier point compte.
     const name = entry.isDirectory()
-      ? entry.name.replace(/^[(@_[]+(\.\.\.)?|[)\]]+$/g, '')
+      ? entry.name
+          .replace(/^(\(\.{1,3}\))+/, '')
+          .replace(/^[(@_[]+(\.\.\.)?|[)\]]+$/g, '')
       : entry.name.split('.')[0];
     if (!KEBAB.test(name)) bad.push(`${dir}/${entry.name}`);
   }

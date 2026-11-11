@@ -35,6 +35,9 @@ Dépendances : `pnpm exec shadcn add <composant>` installe ce qu'il faut (`radix
 19. [Progress](#19-progress)
 20. [Connector](#20-connector)
 21. [ExternalLink](#21-externallink)
+22. [Table](#22-table)
+23. [Dialog](#23-dialog)
+24. [Sheet](#24-sheet)
 
 ---
 
@@ -462,7 +465,7 @@ export { RadioGroup, RadioGroupItem };
 
 ## 9. DotIcon
 
-Primitive de signature : icône dessinée sur une grille de 5 × 5 points. Remplace les icônes au trait. Le point allumé prend `--dot-on` (par défaut `currentColor`), ce qui permet à un parent sélectionné de le passer en `brand-300`.
+Primitive de signature : icône dessinée sur une grille de 5 × 5 points. Remplace les icônes au trait. Le jeu d'icônes se limite à celles qui servent : aujourd'hui les contextes du filtre (tous, pro, perso, école). Le point allumé prend `--dot-on` (par défaut `currentColor`), ce qui permet à un parent sélectionné de le passer en `brand-300`.
 
 | Taille | Point / pas | Usage                               |
 | ------ | ----------- | ----------------------------------- |
@@ -477,13 +480,9 @@ import { cn } from '@/lib/utils';
 
 const ICONS = {
   tous: ['#.#.#', '.....', '#.#.#', '.....', '#.#.#'],
-  '3d': ['..#..', '.#.#.', '#...#', '.#.#.', '..#..'],
-  jeux: ['..#..', '..#..', '#####', '..#..', '..#..'],
-  web: ['#####', '#...#', '#####', '#...#', '#####'],
-  outils: ['#....', '.#...', '..#..', '.#...', '#.###'],
-  lien: ['..#..', '...#.', '#####', '...#.', '..#..'],
-  son: ['....#', '..#.#', '#.#.#', '..#.#', '....#'],
-  actif: ['.....', '.###.', '.###.', '.###.', '.....'],
+  pro: ['.###.', '#####', '##.##', '#####', '#####'],
+  perso: ['..#..', '..#..', '.....', '.###.', '#####'],
+  ecole: ['..#..', '.###.', '#####', '.#.#.', '.###.'],
 } as const;
 
 type DotIconName = keyof typeof ICONS;
@@ -1373,4 +1372,70 @@ export { ExternalLink };
     Mon GitHub <ArrowUpRight data-icon="inline-end" />
   </ExternalLink>
 </Button>
+```
+
+---
+
+## 22. Table
+
+Liste dense de `/projets`. Garde les slots shadcn (`table-container`, `table`, `table-header`, `table-body`, `table-row`, `table-head`, `table-cell`) ; `TableFooter` et `TableCaption` ne sont pas repris tant qu'ils ne servent pas. En-têtes de colonne et cellules en mono (données), filet 1 px entre les lignes, pas de survol coloré ni de fond. Le conteneur défile horizontalement sur petit écran. Implémentation : [../src/components/ui/table.tsx](../src/components/ui/table.tsx).
+
+```tsx
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead scope="col">titre</TableHead>
+      <TableHead scope="col">date</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      {/* En-tête de ligne : discours, pas donnée. */}
+      <TableHead
+        scope="row"
+        className="py-3 font-sans text-base font-semibold text-foreground"
+      >
+        CoriumEngine
+      </TableHead>
+      <TableCell>2025</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+---
+
+## 23. Dialog
+
+Fenêtre modale (Radix Dialog) : piège du focus, Échap, fond inerte, défilement de la page bloqué. Garde les slots shadcn `dialog`, `dialog-trigger`, `dialog-close`, `dialog-overlay`, `dialog-content`, `dialog-title` ; `DialogHeader`, `DialogFooter` et `DialogDescription` ne sont pas repris tant qu'ils ne servent pas. Le contenu est un cadre chanfreiné (`chamfer-frame`, `--chamfer-lg`) qui défile avec lui ; le fond est `bg-background/80` ; l'apparition est un fondu de 120 ms. Le bouton de fermeture (`showCloseButton`, actif par défaut) est un `Button` ghost « Fermer » avec la touche `échap`, pas une croix. Un `DialogTitle` est obligatoire, en `sr-only` si le contenu porte déjà son titre. Implémentation : [../src/components/ui/dialog.tsx](../src/components/ui/dialog.tsx).
+
+`ui/modal.tsx` l'emploie pour la route interceptée `/projets/[slug]` : l'état ouvert suit l'URL, fermer revient en arrière dans l'historique.
+
+```tsx
+<Dialog open={isOpen} onOpenChange={(open) => !open && router.back()}>
+  <DialogContent className="max-w-3xl" aria-describedby={undefined}>
+    <DialogTitle className="sr-only">{label}</DialogTitle>
+    {children}
+  </DialogContent>
+</Dialog>
+```
+
+---
+
+## 24. Sheet
+
+Panneau latéral droit du menu mobile, sur le même Radix Dialog. Slots shadcn `sheet`, `sheet-trigger`, `sheet-content`, `sheet-title` ; seul le côté droit est repris. Fond `bg-background`, filet gauche 1 px, glissement de 120 ms ; même fond d'écran et même bouton « Fermer » que le Dialog. Implémentation : [../src/components/ui/sheet.tsx](../src/components/ui/sheet.tsx).
+
+```tsx
+<Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+  <SheetTrigger asChild>
+    <Button variant="ghost" size="icon" aria-label="Ouvrir le menu">
+      <Menu className="size-6" />
+    </Button>
+  </SheetTrigger>
+  <SheetContent aria-describedby={undefined}>
+    <SheetTitle className="sr-only">Menu</SheetTitle>
+    {/* liens */}
+  </SheetContent>
+</Sheet>
 ```

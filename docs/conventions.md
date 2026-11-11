@@ -59,7 +59,7 @@ du fichier reprend celui de son export principal : `hero-section.tsx` exporte
 `HeroSection`.
 
 Les segments de route Next.js (`(groupe)`, `[param]`, `[...slug]`, `_privé`,
-`@slot`) suivent le kebab-case une fois leurs symboles retirés. Vérification :
+`@slot`, `(.)intercepté`) suivent le kebab-case une fois leurs symboles retirés. Vérification :
 `corepack pnpm check-config`.
 
 Composants rangés par rôle : `layout/` (structure de page), `sections/` (blocs de

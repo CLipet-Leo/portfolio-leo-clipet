@@ -202,9 +202,6 @@ importers:
       react-dom:
         specifier: ^19.3.1
         version: 19.3.1(react@19.3.1)
-      react-toastify:
-        specifier: ^11.2.0
-        version: 11.2.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       resend:
         specifier: ^6.37.0
         version: 6.37.0
@@ -4101,12 +4098,6 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
-
-  react-toastify@11.2.0:
-    resolution: {integrity: sha512-lznu1N00MfEv4p9vGWNVqCfDQ3DxScDAZTFk6STMsEcLcRZKT4PCO0JxsNduGN7LJPBSkXXs/YuLydjh650T7Q==}
-    peerDependencies:
-      react: ^18 || ^19
-      react-dom: ^18 || ^19
 
   react-use-measure@2.1.7:
     resolution: {integrity: sha512-KrvcAo13I/60HpwGO5jpW7E9DfusKyLPLvuHlUyP5zqnmAPhNc6qTRjUQrdTADl0lpPpDVU2/Gg51UlOGHXbdg==}
@@ -8354,12 +8345,6 @@ snapshots:
       tslib: 2.9.1
     optionalDependencies:
       '@types/react': 19.3.0
-
-  react-toastify@11.2.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
-    dependencies:
-      clsx: 2.1.1
-      react: 19.3.1
-      react-dom: 19.3.1(react@19.3.1)
 
   react-use-measure@2.1.7(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
