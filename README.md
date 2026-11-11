@@ -10,5 +10,8 @@ corepack pnpm install --frozen-lockfile
 corepack pnpm dev
 ```
 
-Les autres commandes sont `corepack pnpm lint`, `corepack pnpm build` et
-`corepack pnpm check-config`.
+Avant de pousser, `corepack pnpm check` lance les vérifications de la CI
+(conventions, types, lint, formatage) ; `corepack pnpm format` corrige le
+formatage et `corepack pnpm lint:fix` ce qu'ESLint sait corriger.
+
+Conventions de commit et de nommage : [docs/conventions.md](docs/conventions.md).

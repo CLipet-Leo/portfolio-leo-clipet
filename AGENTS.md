@@ -27,7 +27,7 @@ Note : Les fichiers de polices sont chargés via `next/font/local` dans `layout.
 
 La page d'accueil actuelle assemble le hero, la présentation et les projets dans
 `src/app/page.tsx`. Les sections réutilisables utilisent des exports nommés. Le
-hero s'appuie sur `src/components/three/HeroScene.tsx` ; les projets sont rendus par
+hero s'appuie sur `src/components/three/hero-scene.tsx` ; les projets sont rendus par
 des cartes HTML, pas dans un `Canvas`. Les pages d'erreur et API sont dans
 `src/app/`.
 
@@ -43,17 +43,19 @@ composants cibles comme existants tant qu'ils ne le sont pas.
 
 Les éléments de conception qui ne sont pas explicitement tranchés dans le document
 de direction doivent être clarifiés et consignés avant de coder le comportement
-concerné, notamment :
-
-- le lien entre le choix d'un profil visiteur et le choix d'une catégorie de projets ;
-- les types d'étapes de la timeline et la précision de leurs dates ;
-- la liste finale des catégories de projets.
+concerné. Périodes, dates, contexte des projets (pro, perso, école), projets mis en
+avant et densité (pas de profil visiteur) sont tranchés au § 8 de
+`docs/design-system.md` ; les points restants sont au § 10.
 
 Ne pas bloquer les tâches sans rapport avec ces choix. Pour les animations et
 visuels, prendre en compte la réduction des animations, le clavier et un contenu de
 repli si WebGL est indisponible.
 
 ## Conventions de mise en œuvre
+
+Commits, branches, nommage des fichiers et des identifiants : voir
+[docs/conventions.md](./docs/conventions.md). Le titre de chaque commit est
+vérifié par le hook `commit-msg` et par la CI.
 
 - Préserver la distinction entre faits visibles sans action et navigation :
   les faits d'un projet ne doivent pas être cachés derrière un clic.
@@ -74,10 +76,15 @@ Le projet utilise pnpm via Corepack, avec la version indiquée dans `package.jso
 
 - `corepack pnpm install --frozen-lockfile` — installation des dépendances.
 - `corepack pnpm dev` — serveur de développement.
-- `corepack pnpm lint` — ESLint.
-- `corepack pnpm build` — build Next.js.
-- `corepack pnpm check-config` — vérification des fichiers et options de configuration.
+- `corepack pnpm check` — toutes les vérifications ci-dessous sauf le build ;
+  c'est ce que lance la CI (`.github/workflows/ci.yml`) avant `build`.
+- `corepack pnpm check-config` — configuration et nommage des fichiers de `src/`.
+- `corepack pnpm test` — tests des scripts (`node --test`).
+- `corepack pnpm typecheck` — types générés par `next typegen` puis `tsc`.
+- `corepack pnpm lint` / `lint:fix` — ESLint (config Next.js officielle).
+- `corepack pnpm format` / `format:check` — Prettier (tri des classes Tailwind).
+- `corepack pnpm build` — build Next.js puis sitemap (`next-sitemap`).
 
-Aucun script `test` n'est défini dans `package.json`. Ne pas annoncer une suite de
-tests comme disponible sans l'avoir ajoutée ; lancer les vérifications ciblées
-appropriées au changement.
+Le script `test` ne couvre que `scripts/` : l'application n'a pas de suite de
+tests. Ne pas en annoncer une sans l'avoir ajoutée ; lancer les vérifications
+ciblées appropriées au changement.
