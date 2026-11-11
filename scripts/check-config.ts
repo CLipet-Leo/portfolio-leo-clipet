@@ -5,29 +5,29 @@
  * Vérifie que toutes les configurations sont cohérentes et compatibles
  */
 
-import { existsSync, readFileSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { dirname, relative, resolve } from 'node:path';
 
 type CheckType = 'passed' | 'warnings' | 'errors';
 
-interface PackageJson {
+interface IPackageJson {
   type?: string;
   scripts?: Record<string, string>;
 }
 
-interface TsConfig {
+interface ITsConfig {
   compilerOptions: {
     jsx?: string;
     paths?: Record<string, string[]>;
   };
 }
 
-interface PrettierConfig {
+interface IPrettierConfig {
   plugins?: string[];
   tailwindConfig?: string;
 }
 
-interface ComponentsConfig {
+interface IComponentsConfig {
   tailwind?: {
     css?: unknown;
     baseColor?: string;
@@ -55,7 +55,7 @@ function readJson<T>(path: string): T {
 
 // Vérification du package.json
 try {
-  const pkg = readJson<PackageJson>('package.json');
+  const pkg = readJson<IPackageJson>('package.json');
 
   // Vérifier type: module
   if (pkg.type === 'module') {
@@ -65,7 +65,16 @@ try {
   }
 
   // Vérifier les scripts essentiels
-  const requiredScripts = ['dev', 'build', 'lint', 'format'];
+  const requiredScripts = [
+    'dev',
+    'build',
+    'lint',
+    'format',
+    'format:check',
+    'typecheck',
+    'check',
+    'test',
+  ];
   const missingScripts = requiredScripts.filter((s) => !pkg.scripts?.[s]);
   if (missingScripts.length === 0) {
     addCheck('passed', '✅ package.json: Tous les scripts essentiels présents');
@@ -98,7 +107,7 @@ requiredFiles.forEach((file) => {
 
 // Vérification tsconfig.json
 try {
-  const tsconfig = readJson<TsConfig>('tsconfig.json');
+  const tsconfig = readJson<ITsConfig>('tsconfig.json');
 
   if (
     tsconfig.compilerOptions.jsx === 'react-jsx' ||
@@ -121,7 +130,7 @@ try {
 
 // Vérification .prettierrc
 try {
-  const prettier = readJson<PrettierConfig>('.prettierrc');
+  const prettier = readJson<IPrettierConfig>('.prettierrc');
 
   if (prettier.plugins?.includes('prettier-plugin-tailwindcss')) {
     addCheck('passed', '✅ .prettierrc: Plugin Tailwind configuré');
@@ -173,9 +182,9 @@ function checkComponentsConfig(): void {
     return;
   }
 
-  let cfg: ComponentsConfig;
+  let cfg: IComponentsConfig;
   try {
-    cfg = readJson<ComponentsConfig>('components.json');
+    cfg = readJson<IComponentsConfig>('components.json');
   } catch (error) {
     addCheck('errors', `❌ components.json invalide: ${errorMessage(error)}`);
     return;
@@ -313,6 +322,45 @@ function checkLayoutImportCss(): void {
       `❌ ${layoutPath} ne possède pas d'import de ${canonical} (import CSS résolu : ${importedCssFiles.join(', ') || 'aucun'})`,
     );
   }
+}
+
+// Nommage : tout fichier et dossier en kebab-case (voir docs/conventions.md)
+const KEBAB = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
+function checkNaming(): void {
+  const bad: string[] = [];
+  const entries = ['src', 'scripts'].flatMap((root) =>
+    readdirSync(root, { recursive: true, withFileTypes: true }),
+  );
+  for (const entry of entries) {
+    const dir = relative('.', entry.parentPath).replace(/\\/g, '/');
+    // Segments de route Next.js : (groupe), [param], [...slug], _privé, @slot.
+    // Pour un fichier, seul le nom avant le premier point compte.
+    const name = entry.isDirectory()
+      ? entry.name.replace(/^[(@_[]+(\.\.\.)?|[)\]]+$/g, '')
+      : entry.name.split('.')[0];
+    if (!KEBAB.test(name)) bad.push(`${dir}/${entry.name}`);
+  }
+
+  if (bad.length === 0) {
+    addCheck(
+      'passed',
+      '✅ Nommage des fichiers de src/ et scripts/ conforme (kebab-case)',
+    );
+  } else {
+    bad.forEach((p) =>
+      addCheck('errors', `❌ Nommage (kebab-case attendu) : ${p}`),
+    );
+  }
+}
+
+try {
+  checkNaming();
+} catch (error) {
+  addCheck(
+    'errors',
+    `❌ Vérification du nommage interrompue: ${errorMessage(error)}`,
+  );
 }
 
 // Affichage des résultats

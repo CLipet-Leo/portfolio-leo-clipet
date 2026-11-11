@@ -16,11 +16,7 @@ const nextConfig: NextConfig = {
 
   // Support de Tailwind CSS v4
   experimental: {
-    optimizePackageImports: [
-      'lucide-react',
-      '@radix-ui/react-avatar',
-      '@radix-ui/react-separator',
-    ],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-separator'],
   },
 
   // Note: Retiré 'output: export' car incompatible avec les routes API

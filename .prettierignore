@@ -1,23 +1,19 @@
-# Dossiers d'environnement
-node_modules/
+# Générés
 .next/
-.vscode/
-.vercel/
-build/
 out/
+build/
 coverage/
-dist/
+next-env.d.ts
+public/sitemap*.xml
+public/robots.txt
+public/fonts/
 
-# Fichiers générés
-*.lock
+# Dépendances
 pnpm-lock.yaml
-yarn.lock
-package-lock.json
 
-# Fichiers d'environnement
+# Environnement
 .env*
 
-# Fichiers Next.js
-.next-sitemap*.xml
-sitemap*.xml
-robots.txt
+# Skills tiers (gérés par `skills add`)
+.claude/skills/
+skills-lock.json
