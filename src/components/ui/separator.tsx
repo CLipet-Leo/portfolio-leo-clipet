@@ -1,6 +1,6 @@
 'use client';
 
-import * as SeparatorPrimitive from '@radix-ui/react-separator';
+import { Separator as SeparatorPrimitive } from 'radix-ui';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
@@ -25,7 +25,7 @@ function Separator({
         variant === 'default' &&
           'bg-border data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px',
         variant === 'dotted' &&
-          'data-[orientation=horizontal]:dots-x data-[orientation=vertical]:dots-y [--dots-color:var(--border)] data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
+          '[--dots-color:var(--border)] data-[orientation=horizontal]:dots-x data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:dots-y',
         className,
       )}
       {...props}

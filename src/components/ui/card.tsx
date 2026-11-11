@@ -7,7 +7,7 @@ function Card({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="card"
       className={cn(
-        'chamfer-frame text-card-foreground flex flex-col gap-6 py-6 [--chamfer:var(--chamfer-lg)]',
+        'chamfer-frame flex flex-col gap-6 py-6 text-card-foreground [--chamfer:var(--chamfer-lg)]',
         className,
       )}
       {...props}
@@ -20,7 +20,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="card-header"
       className={cn(
-        '@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto]',
+        '@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6',
         className,
       )}
       {...props}
@@ -32,7 +32,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-title"
-      className={cn('font-dot text-[24px] leading-7 font-bold', className)}
+      className={cn('text-h2 font-semibold', className)}
       {...props}
     />
   );
@@ -75,7 +75,10 @@ function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-footer"
-      className={cn('flex items-center justify-between gap-4 px-6', className)}
+      className={cn(
+        'flex items-center justify-between gap-4 px-6 [.border-t]:pt-6',
+        className,
+      )}
       {...props}
     />
   );
