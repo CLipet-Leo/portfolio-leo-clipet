@@ -19,7 +19,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0 # historique complet pour vérifier les commits de la PR
       - uses: pnpm/action-setup@v4 # version lue dans `packageManager`
